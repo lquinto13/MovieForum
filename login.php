@@ -122,6 +122,8 @@ input[type=password] {
   			<div class="card col-md-8">
   				<div class="white-box">	
   					<form id="login-form" form method="POST" action="login.php" >
+            <?php include('errors.php'); ?>
+
   						<div class="form-group">
               <div class="input-group">
                           <div class="container">
