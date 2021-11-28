@@ -93,7 +93,6 @@ else
 			echo '<center> <table border="1" > </center>
 				  <tr>
 					<th>Category</th>
-					<th>Setting</th>
 				  </tr>'; 
 			  
 		 while($row = mysqli_fetch_assoc($result) )
@@ -102,8 +101,6 @@ else
 			echo '<tr>';
 				echo '<td class="leftpart">';
 					echo '<h3><a href="category.php?id='.$row['cat_id'].'">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
-				 echo '<td class="rightpart">';
-				echo '</td>';
 			echo '</tr>';
 		}
 		   }

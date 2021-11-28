@@ -33,7 +33,6 @@ $name = $_SESSION['username'];
 $user_check_query = "SELECT  * FROM users WHERE username ='$name'";
 $result2 = mysqli_query($db, $user_check_query);
 $user = mysqli_fetch_assoc($result2);
-echo $_POST['reply-content'];
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {
     //someone is calling the file directly, which we don't want
