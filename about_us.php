@@ -86,7 +86,7 @@ html {
 <html>
 <head>
 	<title>About Us</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <div class="about-section">
@@ -99,7 +99,7 @@ html {
 <div class="row">
   <div class="column">
     <div class="card">
-      <img src="human.jpg" alt="Jane" style="width:100%">
+      <img src="imgs/human.jpg" alt="Jane" style="width:100%">
       <div class="container">
         <h2>Lance Quinto</h2>
         <p class="title">Student</p>
@@ -113,7 +113,7 @@ html {
 
   <div class="column">
     <div class="card">
-      <img src="human.jpg" alt="Mike" style="width:100%">
+      <img src="imgs/human.jpg" alt="Mike" style="width:100%">
       <div class="container">
         <h2>Mike Ross</h2>
         <p class="title">Student</p>
@@ -128,7 +128,7 @@ html {
  <div class="row">
   <div class="column">
     <div class="card">
-      <img src="human.jpg" alt="Jane" style="width:100%">
+      <img src="imgs/human.jpg" alt="Jane" style="width:100%">
       <div class="container">
         <h2>Lance Quinto</h2>
         <p class="title">Student</p>
@@ -142,7 +142,7 @@ html {
 
   <div class="column">
     <div class="card">
-      <img src="human.jpg" alt="Mike" style="width:100%">
+      <img src="imgs/human.jpg" alt="Mike" style="width:100%">
       <div class="container">
         <h2>Mike Ross</h2>
         <p class="title">Studentr</p>
