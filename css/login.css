@@ -1,4 +1,41 @@
-* {
+@media (min-width: 1025px) {
+  .h-custom-2 {
+    height: 100%;
+  }
+}
+
+.gradient-background{
+  background: linear-gradient(-30deg, #CB5EEE, #F40076, #DF98FA, #4BE1EC);
+  background-size: 180% 180%;
+  height: 100vh;
+  /* animation: gradient 15s ease infinite; */
+}
+
+/* @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+form{
+  animation: fadeIn linear 3s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+} */
+
+
+/* Original CSS */
+
+/* * {
     margin: 0;
     padding: 0;
     outline: 0;
@@ -103,4 +140,4 @@
     padding: 10px 5px;
     margin: 8px 0;
     box-sizing: border-box;
-  }
+  } */
