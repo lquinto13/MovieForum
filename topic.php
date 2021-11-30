@@ -9,21 +9,34 @@ include('server.php');
   	unset($_SESSION['username']);
   	header("location: login.php");
   }
-  include 'header.php'
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+		font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+	
+</style>
 <body>
 
 <div >
 </div>
 <div >
   	<?php
+	    include 'header.php';
 //create_cat.php
 $db = new mysqli('localhost', 'root', '', 'movieforumdb');
 if ($db->connect_error) {
@@ -60,6 +73,8 @@ $sqltopic = "SELECT
 $user_check_query = "SELECT * FROM users  LIMIT 1";
 $result = $db->query($sql);
 $result3 = $db->query($sqltopic);
+$result7 = $db->query($sql);
+
 
 
 
@@ -77,7 +92,7 @@ else
     }
     else
     {
-	
+
 	$name = $_SESSION['username'];  
 
         $name = $_SESSION['username'];  
@@ -90,7 +105,7 @@ else
 		{
 			//prepare the table
 			 
-
+		
 		echo "<br>";
         echo '<center> <table border="1" > </center>
 			  <tr>
@@ -101,49 +116,121 @@ else
              
         	while($row = mysqli_fetch_assoc($result) )
        		{       
-				
-            	echo '<tr>';
+				if($_SERVER['REQUEST_METHOD'] != 'POST')
+				{
+					echo '<tr>';
                 	echo '<td class="leftpart">';
                     	echo '<h3>' . $row['username'] . '</h3>';
                         echo '<br>'. '<h3>' . $row['post_date'] . '</h3>';
-
-				 	echo '<td class="rightpart">';
-                     echo '<h3><p ">' . $row['post_content'] . '</p>';
-                     echo '</td>';
-            	echo '</tr>';
-                echo '<tr>';
-               		echo '<td class="bottomreply" colspan= "2">';
-                	echo '<center>Reply:<br>';
-					echo "<br>";
-                	echo ' <textarea> </textarea> ';
-					echo '<input type = "button" value = "Reply" name = "reply-content"> </button>';	
-                echo '</td>';
-            echo '</tr>';
-        	}
+				 		echo '<td class="rightpart">';
+                     	echo '<h3><p ">' . $row['post_content'] . '</p>';
+                    	 echo '</td>';
+            			echo '</tr>';
+               		 echo '<tr>';
+               	
+         		  echo '</tr>';
+        		}
+				else
+				{
+					$sql = "INSERT INTO 
+                    posts(post_content,
+                          post_date,
+                          post_topic,
+                          post_by) 
+                VALUES ('" . $_POST['reply-content'] . "',
+                        NOW(),
+                        " . mysqli_real_escape_string($db, $_GET['id']) . ",
+                        " . $user['username'] . ")";
+                         
+        		$result = mysqli_query($db, $sql);
+                         
+        		if(!$result)
+       			{
+       		   	  	echo 'Your reply has not been saved, please try again later.';
+       			}
+        		else
+        		{
+            		echo 'Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.';
+        		}
+				}
+			}
+			$row = mysqli_fetch_assoc($result7);
+			echo '<td class="bottomreply" colspan= "2">';
+					   echo '<center>Reply:<br>';
+					   echo "<br>";
+					   echo '<form method="post" action="reply.php?id='.$row['post_topic'].'">
+					   <textarea name="reply-content"></textarea>
+					   <input type="submit" value="Submit reply" />
+				   </form> ';
+					   echo '</td>';
+				  echo '</tr>';
+		   
+	   
    		}
 		   else{
 			   //prepare the table
-			   echo '<table border="1">
-			   <tr>
-				 <th>Category</th>
-				 <th>Last topic</th>
-			   </tr>'; 
-			  
+			   
+		echo "<br>";
+        echo '<center> <table border="1" > </center>
+			  <tr>
+			  <td class="bottomreply" colspan= "2">
+			  <center><h3> '. $title['topic_subject'] .' </h3></center>
+			  </td>
+              </tr>'; 
 		 while($row = mysqli_fetch_assoc($result) )
 		 {               
-			 echo '<tr>';
-				 echo '<td class="leftpart">';
-					 echo '<h3><a href="category.php?id">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
-				 echo '</td>';
-				 echo '<td class="rightpart">';
-							 echo '<a href="topic.php?id=">Topic subject</a> at 10-10';
-				 echo '</td>';
-			 echo '</tr>';
+			if($_SERVER['REQUEST_METHOD'] != 'POST')
+			{
+				echo '<tr>';
+				echo '<td class="leftpart">';
+					echo '<h3>' . $row['username'] . '</h3>';
+					echo '<br>'. '<h3>' . $row['post_date'] . '</h3>';
+					 echo '<td class="rightpart">';
+					 echo '<h3><p ">' . $row['post_content'] . '</p>';
+					 echo '</td>';
+					echo '</tr>';
+					echo '<tr>';
+				   
+			}
+			else
+			{
+				$sql = "INSERT INTO 
+				posts(post_content,
+					  post_date,
+					  post_topic,
+					  post_by) 
+			VALUES ('" . $_POST['reply-content'] . "',
+					NOW(),
+					" . mysqli_real_escape_string($db, $_GET['id']) . ",
+					" . $user['username'] . ")";
+					 
+			$result = mysqli_query($db, $sql);
+					 
+			if(!$result)
+			   {
+						echo 'Your reply has not been saved, please try again later.';
+			   }
+			else
+			{
+				echo 'Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.';
+			}
+			}
            
 
 
 		 }
-		   }
+		 $row = mysqli_fetch_assoc($result7);
+		 echo '<td class="bottomreply" colspan= "2">';
+					echo '<center>Reply:<br>';
+					echo "<br>";
+					echo '<form method="post" action="reply.php?id='.$row['post_topic'].'">
+					<textarea name="reply-content"></textarea>
+					<input type="submit" value="Submit reply" />
+				</form> ';
+					echo '</td>';
+			   echo '</tr>';
+			   
+		}
 	}
 		
 }
