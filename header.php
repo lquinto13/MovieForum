@@ -14,16 +14,15 @@ if (isset($_GET['logout'])) {
 
 <style>
 .topnav {
-  background-color: #59b6ec61;
+  background-color: #262626;
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
-
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: "black";
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -41,8 +40,8 @@ if (isset($_GET['logout'])) {
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: #333539;
+  color: white;
 }
 
 /* Add a color to the active/current link */

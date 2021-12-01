@@ -4,8 +4,11 @@
   }
   body {
     font-size: 120%;
-    background: #F8F8FF;
+    background: linear-gradient(-30deg, #CB5EEE, #F40076, #DF98FA, #4BE1EC) !important;
+    background-size: 180% 180%;
+    height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+    color:white;
 
   }
   
