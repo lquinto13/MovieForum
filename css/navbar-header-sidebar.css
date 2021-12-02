@@ -1,0 +1,160 @@
+#wrapper {
+    overflow-x: hidden;
+ }
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -20rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  color:white;
+  position: relative;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 20rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#sidebar-heading{
+  font-weight: bold;
+}
+
+/*------------------------------------------*/
+
+/* icons for sidebar buttons styling */
+.button-icon{
+  float: right;
+  text-align: center;
+}
+
+[class^="button-icon"], [class*="button-icon"] {
+  display: inline-block;
+  width: 10%;
+}
+/* end of icons for sidebar buttons styling */
+
+/*------------------------------------------*/
+
+/* sidebar button styling (does not include content management button for dropdown or logout but affects the items in the content management dropdown menu) */
+#button-sidebar{
+  font-size: 16px;
+}
+
+#button-sidebar a{
+  text-decoration: none;
+  color: #F0F0F0;
+}
+
+#button-sidebar a:focus{
+  font-weight: bold;
+  color:#FF8FAB;
+}
+/* end of sidebar button styling */
+
+/*------------------------------------------*/
+
+/* content management button styling */
+#content-management-button{
+  color: #F0F0F0;
+}
+
+#content-management-button[aria-expanded="true"]{
+  font-weight: bold;
+  color: #FF8FAB;
+}
+/* end of content management button styling */
+
+/*------------------------------------------*/
+
+/* logout sidebar button styling */
+.logout-sidebar-button {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  color: #E65061;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.logout-sidebar-button:hover{
+  color: #E65061;
+}
+
+.logout-sidebar-button:active{
+  color: #802D37;
+}
+
+.logout-sidebar-button:focus{
+  color: #802D37;
+}
+/* end of logout sidebar button styling */
+
+/*------------------------------------------*/
+
+@media (min-width: 850px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -20rem;
+  }
+}
+/* Original CSS */
+
+/* .topnav {
+    background-color: #262626;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* Style the links inside the navigation bar */
+/* .topnav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav p {
+    float: right;
+    color: "black";
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+} */
+
+/* Change the color of links on hover */
+/* .topnav a:hover {
+    background-color: #333539;
+    color: white;
+} */
+
+/* Add a color to the active/current link */
+/* .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+} */

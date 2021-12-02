@@ -64,7 +64,12 @@ else
                     topic_cat = ". mysqli_real_escape_string($db, $_GET['id']);
          
         $result = mysqli_query($db, $sql);
-         
+
+		$name = $_SESSION['username'];
+        $user_check_query = "SELECT * FROM users WHERE username ='$name'";
+        $result2 = mysqli_query($db, $user_check_query);
+        $user = mysqli_fetch_assoc($result2);
+        
         if(!$result)
         {
             echo 'The topics could not be displayed, please try again later.';
@@ -82,6 +87,7 @@ else
                       <tr>
                         <th>Topic</th>
                         <th>Created at</th>
+                        <th>Rating</th>
                       </tr>'; 
                      
                 while($row = mysqli_fetch_assoc($result))
@@ -92,6 +98,26 @@ else
                         echo '</td>';
                         echo '<td class="rightpart">';
                             echo date('d-m-Y', strtotime($row['topic_date']));
+                        echo '</td>';
+
+                        $likesql = "SELECT * FROM likes WHERE topic_id = " . $row['topic_id'];
+                        $result3 = mysqli_query($db, $likesql);
+                        $likes = 0;
+                        $liked = NULL;
+                        $rate = "No rating";
+
+                        if(!mysqli_num_rows($result3) == 0)
+                        {
+                            while($row2 = mysqli_fetch_assoc($result3))
+                            {
+                                if($row2['isLike'] == true) {
+                                    $likes++;
+                                }
+                            }
+                            $rate = number_format((($likes / mysqli_num_rows($result3)) * 100), 2) . "%";
+                        }
+                        echo '<td>';
+                            echo $rate;
                         echo '</td>';
                     echo '</tr>';
                 }

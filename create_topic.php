@@ -138,7 +138,7 @@
                     //something went wrong, display the error
                     echo 'An error occured while inserting your post. Please try again later.' . mysql_error();
                     $sql = "ROLLBACK;";
-                    $result = mysql_query($sql);
+                    $result = mysqli_query($db, $sql);
                 }
                 else
                 {
