@@ -69,15 +69,10 @@ if (isset($_GET['logout'])) {
       <!-- Right elements -->
       <div class="d-flex align-items-center">
         <!-- User -->
-        <a class="text-reset me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-          <i class="fas fa-user-circle"></i>
-          Welcome, <strong style="color: #FF8FAB;"><?php echo $_SESSION['username']; ?></strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li>
-            <a class="dropdown-item" href="index.php?logout='1'" style="color: #F93154;">Logout</a>
-          </li>
-        </ul>
+        <span class="navbar-brand">
+          <i class="fas fa-user-circle" style="padding-right: 5px;"></i>
+          Welcome, <strong style="color: #FF8FAB; padding-left: 4px"><?php echo $_SESSION['username']; ?></strong>
+        </span>
       </div>
       <!-- Right elements -->
     </div>
