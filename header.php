@@ -24,7 +24,7 @@ if (isset($_GET['logout'])) {
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/navbar-header.css">
+  <link rel="stylesheet" href="css/navbar-header-sidebar.css">
 </head>
 
 <body>
@@ -33,19 +33,19 @@ if (isset($_GET['logout'])) {
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
-      </button>
+      </button> -->
 
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
-        <span class="navbar-brand mb-0 h1">
+        <!-- <span class="navbar-brand mb-0 h1">
           <i class="fas fa-film" style="padding-right: 5px; color: #FF8FAB;"></i>
           <strong>MOVIE FORUM</strong>
-        </span>
+        </span> -->
         <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="/movieforum/index.php">Home</a>
           </li>
@@ -58,7 +58,7 @@ if (isset($_GET['logout'])) {
           <li class="nav-item">
             <a class="nav-link" href="/movieforum/about_us.php">About Us</a>
           </li>
-        </ul>
+        </ul> -->
         <!-- Left links -->
       </div>
       <!-- Collapsible wrapper -->
