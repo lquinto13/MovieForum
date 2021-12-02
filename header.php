@@ -32,6 +32,9 @@ if (isset($_GET['logout'])) {
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- Container wrapper -->
     <div class="container-fluid">
+      <button class="btn bg-transparent" type="button" style="color: white;" id="menu-toggle">
+        <span><i class="fas fa-bars fa-lg"></i></span>
+      </button>
       <!-- Toggle button -->
       <!-- <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
@@ -68,7 +71,7 @@ if (isset($_GET['logout'])) {
         <!-- User -->
         <a class="text-reset me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
           <i class="fas fa-user-circle"></i>
-          Welcome, <strong style="color: #39C0ED;"><?php echo $_SESSION['username']; ?></strong>
+          Welcome, <strong style="color: #FF8FAB;"><?php echo $_SESSION['username']; ?></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
           <li>
@@ -116,6 +119,13 @@ if (isset($_GET['logout'])) {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <!-- MDB Script -->
   <script type="text/javascript" src="mdb-bootstrap-3.10.1/js/mdb.min.js"></script>
+
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 </body>
 
 </html>

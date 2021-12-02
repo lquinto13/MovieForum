@@ -17,6 +17,7 @@ if (isset($_GET['logout'])) {
 <head>
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/table.css">
 </head>
 
 <body>
@@ -53,89 +54,88 @@ if (isset($_GET['logout'])) {
 				</button>
 			</div>
 		</div>
+
 		<!-- Page content wrapper-->
 		<div id="page-content-wrapper">
 			<?php include 'header.php' ?>
 			<!-- Page content-->
-			<div class="container-fluid">
-				<?php
-				//create_cat.php
+			<?php
+			//create_cat.php
 
+			$db = new mysqli('localhost', 'root', '', 'movieforumdb');
 
-				$db = new mysqli('localhost', 'root', '', 'movieforumdb');
+			if ($db->connect_error) {
+				die("Connection failed: " . $db->connect_error);
+			}
 
-				if ($db->connect_error) {
-					die("Connection failed: " . $db->connect_error);
-				}
+			$sql = "SELECT cat_id, cat_name, cat_description FROM categories";
+			$sqltop = "SELECT * FROM topics";
 
-				$sql = "SELECT cat_id, cat_name, cat_description FROM categories";
-				$sqltop = "SELECT * FROM topics";
+			$user_check_query = "SELECT * FROM users  LIMIT 1";
 
-				$user_check_query = "SELECT * FROM users  LIMIT 1";
+			$result = $db->query($sql);
+			$result3 = $db->query($sqltop);
 
-				$result = $db->query($sql);
-				$result3 = $db->query($sqltop);
-
-
-
-
-				if (!$result) {
-					echo 'The categories could not be displayed, please try again later.';
+			if (!$result) {
+				echo 'The categories could not be displayed, please try again later.';
+			} else {
+				if (mysqli_num_rows($result) == 0) {
+					echo 'No categories defined yet.';
 				} else {
-					if (mysqli_num_rows($result) == 0) {
-						echo 'No categories defined yet.';
+					$name = $_SESSION['username'];
+					$user_check_query = "SELECT  * FROM users WHERE username ='$name'";
+					$result2 = mysqli_query($db, $user_check_query);
+					$user = mysqli_fetch_assoc($result2);
+					$querytop = mysqli_query($db, $sqltop);
+					$last_id = mysqli_insert_id($db);
+
+					if ($user['usertype'] == 1) {
+						//prepare the table
+						echo '	<div class="rounded table-with-FixHead table-bordered">
+										<table class="table table-bordered table-striped table-dark text-center">
+											<thead>
+												<tr>
+													<th scope="col"><h4>Category</h4></th>
+													<th scope="col"><h4>Description</h4></th>
+													<th scope="col"><h4>Action</h4></th>
+												</tr>
+											</thead>';
+
+						while ($row = mysqli_fetch_assoc($result)) {
+							$row2 = mysqli_fetch_assoc($result3);
+							echo '<tbody>
+										<tr>
+											<td>';
+							echo '			<h3><a href="category.php?id=' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</a></h3>' . '<td><h5>' . strtoupper($row['cat_description']) . '</h5></td>';
+							echo '		<td>
+												<button type="button" class="btn btn-danger">DELETE</button>
+											</td>
+										</tr>';
+						}
 					} else {
-						$name = $_SESSION['username'];
-						$user_check_query = "SELECT  * FROM users WHERE username ='$name'";
-						$result2 = mysqli_query($db, $user_check_query);
-						$user = mysqli_fetch_assoc($result2);
-						$querytop = mysqli_query($db, $sqltop);
-						$last_id = mysqli_insert_id($db);
+						echo '	<div class="rounded table-with-FixHead table-bordered">
+										<table class="table table-bordered table-striped table-dark text-center">
+											<thead>
+												<tr>
+													<th scope="col"><h4>Category</h4></th>
+													<th scope="col"><h4>Description</h4></th>
+												</tr>
+											</thead>';
 
-
-
-
-						if ($user['usertype'] == 1) {
-							//prepare the table
-							echo "<br>";
-							echo '	<center> <table border="1" > </center>
-              							<tr>
-                							<th>Category</th>
-											<th>Setting</th>
-              							</tr>';
-
-							while ($row = mysqli_fetch_assoc($result)) {
-								$row2 = mysqli_fetch_assoc($result3);
-								echo '<tr>';
-								echo '<td class="leftpart">';
-								echo '<h3><a href="category.php?id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
-								echo '<td class="rightpart">';
-								echo '<center><button>Delete</button></center>';
-								echo '</td>';
-								echo '</tr>';
-							}
-						} else {
-							echo "<br>";
-							echo '<center> <table border="1" > </center>
-				  <tr>
-					<th>Category</th>
-				  </tr>';
-
-							while ($row = mysqli_fetch_assoc($result)) {
-								$row2 = mysqli_fetch_assoc($result3);
-								echo '<tr>';
-								echo '<td class="leftpart">';
-								echo '<h3><a href="category.php?id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
-								echo '</tr>';
-							}
+						while ($row = mysqli_fetch_assoc($result)) {
+							$row2 = mysqli_fetch_assoc($result3);
+							echo '<tbody>
+										<tr>
+											<td>';
+							echo '			<h3><a href="category.php?id=' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</a></h3>' . '<td><h5>' . strtoupper($row['cat_description']) . '</h5></td>';
+							echo '	</tr>';
 						}
 					}
 				}
-				?>
-			</div>
+			}
+			?>
 		</div>
 	</div>
-
 </body>
 
 </html>

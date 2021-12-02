@@ -1,0 +1,50 @@
+::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #a5aaad;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a5aaad;
+}
+  /*------------------------------------------*/
+.table-with-FixHead {
+    overflow-y: auto;
+    overflow-x: auto, hidden;
+    height: 60vh;
+    font-size: 1.25em;
+    margin: 2%;
+}
+.table-with-FixHead thead th {
+    position: sticky;
+    top: 0;
+    background-color: #262626;
+}
+thead {
+    background-color: #262626;
+    color: white;
+}
+tbody {
+    font-weight: bolder;
+}
+table a,
+table a:link,
+table a:visited {
+    color: #FF8FAB;
+}
+
+/* .table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #ffb75e48;
+}
+.table.table-bordered > thead > tr > th,
+.table.table-bordered > tbody > tr > td {
+    border-color: #262626;
+} */
+/*------------------------------------------*/
