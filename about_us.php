@@ -41,8 +41,8 @@ if (isset($_GET['logout'])) {
           </button>
 
           <div class="collapse" id="contentManagement">
-            <a type="button" href="/movieforum/create_topic.php" class="list-group-item list-group-item-action bg-dark">CREATE A TOPIC</a>
             <a type="button" href="/movieforum/create_cat.php" class="list-group-item list-group-item-action bg-dark">CREATE A CATEGORY</a>
+            <a type="button" href="/movieforum/create_topic.php" class="list-group-item list-group-item-action bg-dark">CREATE A TOPIC</a>
           </div>
         </div>
 
