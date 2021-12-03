@@ -90,7 +90,8 @@ if (isset($_GET['logout'])) {
                 } else {
                     //display category data
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<center> <h2 class="rounded display-3" id = "title-style">Topics in the \'' . $row['cat_name'] . '\' category</h2> </center>';
+                        echo '<div class="container-fluid">';
+                        echo '<center> <h1 class="rounded" id = "title-style">Topics in the \'' . $row['cat_name'] . '\' category</h1> </center>';
                     }
 
                     //do a query for the topics
@@ -150,9 +151,9 @@ if (isset($_GET['logout'])) {
                                 // Function geeks of parent class
                                 function delete()
                                 {
-                                    echo '  <td>
+                                    echo '  <td style="cell-padding: 5px;">
                                                 <form method = "POST" action="cattopic-delete.php?id =">
-                                                    <center><button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button></center>
+                                                    <button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button>
                                                 </form>';
                                     echo '  </td>';
                                 }
@@ -171,7 +172,7 @@ if (isset($_GET['logout'])) {
                                 {
                                     echo '  <td>
                                                 <form method = "POST" action="cattopic-delete.php?id =">
-                                                    <center><button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button></center>
+                                                    <button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button>
                                                 </form>';
                                     echo '  </td>';
                                 }
