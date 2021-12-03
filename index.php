@@ -85,7 +85,9 @@ if (isset($_GET['logout'])) {
 			$result3 = $db->query($sqltop);
 
 			if (!$result) {
-				echo 'The categories could not be displayed, please try again later.';
+				echo '	<div class="alert alert-danger" role="alert" style="margin: 1%">
+							<i class="fas fa-exclamation-circle"></i> The categories could not be displayed, please try again later.
+						</div';
 			} else {
 				if (mysqli_num_rows($result) == 0) {
 					echo 'No categories defined yet.';
@@ -114,10 +116,10 @@ if (isset($_GET['logout'])) {
 							echo '<tbody>
 										<tr>
 											<td>';
-							echo '			<h3><a href="category.php?id=' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</a></h3>' . '<td><h5>' . strtoupper($row['cat_description']) . '</h5></td>';
-							echo '		<td>
+							echo '				<h3><a href="category.php?id=' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</a></h3></td>' . '<td><h5>' . strtoupper($row['cat_description']) . '</h5></td>';
+							echo '			<td>
 												<form method = "POST" action="delete.php?id =">
-													<button type="submit" name = "delete"  value = ' . $row['cat_id'] . ' class="btn btn-danger">DELETE</button>
+													<button type="submit" name = "delete"  value = ' . $row['cat_id'] . 'class="btn btn-danger">DELETE</button>
 												</form>
 											</td>
 										</tr>';
@@ -134,11 +136,11 @@ if (isset($_GET['logout'])) {
 
 						while ($row = mysqli_fetch_assoc($result)) {
 							$row2 = mysqli_fetch_assoc($result3);
-							echo '<tbody>
-										<tr>
-											<td>';
-							echo '			<h3><a href="category.php?id=' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</a></h3>' . '<td><h5>' . strtoupper($row['cat_description']) . '</h5></td>';
-							echo '	</tr>';
+							echo '			<tbody>
+												<tr>
+													<td>';
+							echo '						<h3><a href="category.php?id=' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</a></h3>' . '<td><h5>' . strtoupper($row['cat_description']) . '</h5></td>';
+							echo '				</tr>';
 						}
 					}
 				}
