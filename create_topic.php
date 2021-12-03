@@ -161,7 +161,7 @@ if (isset($_GET['logout'])) {
                     //the first query worked, now start the second, posts query
                     //retrieve the id of the freshly created topic for usage in the posts query
 
-                    if ($errors > 0) {
+                    if (count($errors) > 0) {
                         echo '  <div class="alert alert-primary" role="alert" style="margin: 1%">
                                     Return to  <a href="create_topic.php?id=">create topic</a>.
                                 </div>';

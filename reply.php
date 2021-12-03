@@ -45,7 +45,7 @@ include('header.php');
             if (!$_SESSION['username']) {
                 echo 'You must be signed in to post a reply.';
             } else {
-                if ($errors > 0) {
+                if (count($errors) > 0) {
                     echo 'Return to  <a href="topic.php?id='.$_GET['id'].'">your topic</a>.';
                 } else {
                     //a real user posted a real reply
