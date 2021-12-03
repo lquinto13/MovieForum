@@ -66,8 +66,10 @@ if (isset($_GET['logout'])) {
             <!-- Page content-->
             <?php
             //create_cat.php
+          
             $db = mysqli_connect('localhost', 'root', '', 'movieforumdb');
-
+            include('errortest.php');
+            include('errors.php');
             if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                 //the form hasn't been posted yet, display it
                 echo "  <form method='post' action='' style='padding: 2%; margin-top: 2%;'>
@@ -86,22 +88,26 @@ if (isset($_GET['logout'])) {
                             </div>
 
                             <!-- Submit Button -->
-                            <button type='submit' class='btn btn-primary btn-block mb-4'>Add Category</button>
+                            <button type='submit' name = 'create-cat' class='btn btn-primary btn-block mb-4'>Add category</button>
                         </form>";
             } else {
-                $catname = mysqli_real_escape_string($db, $_POST['cat_name']);
-                $catdesc = mysqli_real_escape_string($db, $_POST['cat_description']);
-                $sql = "INSERT INTO categories (cat_name, cat_description) VALUES('$catname', '$catdesc')";
-
-
-                $result = mysqli_query($db, $sql);
-                if (!$result) {
-                    //something went wrong, display the error
-                    echo 'Error' . mysqli_error($db);
+                if (count($errors) > 0) {
+                    echo 'Return to  <a href="create_cat.php?id=">create category</a>.';
                 } else {
-                    echo '  <div class="alert alert-success" role="alert">
+                    $catname = mysqli_real_escape_string($db, $_POST['cat_name']);
+                    $catdesc = mysqli_real_escape_string($db, $_POST['cat_description']);
+                    $sql = "INSERT INTO categories (cat_name, cat_description) VALUES('$catname', '$catdesc')";
+
+
+                    $result = mysqli_query($db, $sql);
+                    if (!$result) {
+                        //something went wrong, display the error
+                        echo 'Error' . mysqli_error($db);
+                    } else {
+                        echo '  <div class="alert alert-success" role="alert">
                                 New category successfully added.
                             </div>';
+                    }
                 }
             }
             ?>

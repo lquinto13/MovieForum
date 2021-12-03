@@ -57,7 +57,8 @@ else
                     topic_id,
                     topic_subject,
                     topic_date,
-                    topic_cat
+                    topic_cat,
+                    topic_by
                 FROM
                     topics
                 WHERE
@@ -89,6 +90,32 @@ else
                         <th>Created at</th>
                         <th>Rating</th>
                       </tr>'; 
+                      class AdminDelete
+                      {
+                          // Function geeks of parent class
+                          function delete()
+                          {
+                              echo '<td class="rightpart">';
+                              echo '<button>Delete</button>';
+                              echo '</td>';
+                          }
+                      }
+
+                      // This is child class
+                      class Userdelete extends AdminDelete
+                      {
+
+                          // Overriding geeks method
+                          function delete()
+                          {
+                              echo '<td class="rightpart">';
+                              echo '<button>Delete</button>';
+                              echo '</td>';
+                          }
+                      }
+
+                      $p = new AdminDelete;
+                      $c = new Userdelete;
                      
                 while($row = mysqli_fetch_assoc($result))
                 {               
@@ -99,6 +126,10 @@ else
                         echo '<td class="rightpart">';
                             echo date('d-m-Y', strtotime($row['topic_date']));
                         echo '</td>';
+                        
+
+
+                       
 
                         $likesql = "SELECT * FROM likes WHERE topic_id = " . $row['topic_id'];
                         $result3 = mysqli_query($db, $likesql);
@@ -119,6 +150,13 @@ else
                         echo '<td>';
                             echo $rate;
                         echo '</td>';
+                        if ($_SESSION['role'] == 1) {
+                            $p->delete();
+                        }else if($_SESSION['userID'] == $row['topic_by'])
+                        {
+                            $c->delete();
+                        }
+                        
                     echo '</tr>';
                 }
             }

@@ -69,10 +69,63 @@ if (isset($_GET['logout'])) {
       <!-- Right elements -->
       <div class="d-flex align-items-center">
         <!-- User -->
-        <span class="navbar-brand">
-          <i class="fas fa-user-circle" style="padding-right: 5px;"></i>
-          Welcome, <strong style="color: #FF8FAB; padding-left: 4px"><?php echo $_SESSION['username']; ?></strong>
-        </span>
+        <?php
+          $db = new mysqli('localhost', 'root', '', 'movieforumdb');
+          $name = $_SESSION['username'];
+          $user_check_query = "SELECT  * FROM users WHERE username ='$name'";
+          $result = mysqli_query($db, $user_check_query);
+          $user = mysqli_fetch_assoc($result);
+          class User
+          {
+            public $username;
+            public $usertype;
+
+            public function __construct($username, $usertype)
+            {
+              $this->username = $username;
+              $this->usertype = $usertype;
+            }
+          }
+          class Admin extends User
+          {
+            public function displayAdminPanel()
+            {
+              echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
+              echo '<i class="fas fa-user-circle"></i>';
+              echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'> $this->username </strong>";
+              echo '</a>';
+              echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
+              echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/adminpage.php">Admin Controls</a></l1>';
+              echo '<li> <a class="dropdown-item" href="index.php?logout=" style="color: #F93154;">Logout</a>  </li>';
+              echo ' </ul>';
+            }
+          }
+
+          class Normal extends User
+          {
+            public function displayUserSettings()
+            {
+              echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
+              echo '<i class="fas fa-user-circle"></i>';
+              echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'>$this->username </strong>";
+              echo '</a>';
+              echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
+              echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/usersettings.php">User Settings</a></l1>';
+              echo '<li> <a class="dropdown-item" href="index.php?logout=" style="color: #F93154;">Logout</a>  </li>';
+              echo ' </ul>';
+            }
+          }
+
+          if ($user['usertype'] == 1) {
+            $admin = new Admin($name, 1);
+            $admin->displayAdminPanel();
+          } else {
+            $normal = new Normal($name, 2);
+            $normal->displayUserSettings();
+          }
+
+          
+          ?>
       </div>
       <!-- Right elements -->
     </div>

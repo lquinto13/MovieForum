@@ -81,8 +81,12 @@ if (isset($_POST['login_user'])) {
         $password = md5($password);
         $query = "SELECT * FROM users WHERE username='$username' AND password='$password' ";
         $results = mysqli_query($db, $query);
+        $row = mysqli_fetch_assoc($results);
+
         if (mysqli_num_rows($results) == 1) {
+          $_SESSION['userID'] = $row['userID'];
           $_SESSION['username'] = $username;
+          $_SESSION['role'] = $row['usertype'];     
           $_SESSION['success'] = "You are now logged in";
           header('location: index.php');
         }else {

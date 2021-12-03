@@ -69,10 +69,10 @@ include 'header.php'
 
     $db = new mysqli('localhost', 'root', '', 'movieforumdb');
     $type = $_POST['type'];
-    include('errorhandling.php');
+    include('usersettingerror.php');
     include('errors.php');
     if (count($errors) > 0) {
-      echo 'Return to  <a href="adminpage.php?id=' . htmlentities($_GET['id']) . '">control panel</a>.';
+      echo 'Return to  <a href="usersettings.php?id=' . htmlentities($_GET['id']) . '">settings </a>.';
     } else {
 
       class changedInfo
@@ -129,19 +129,18 @@ include 'header.php'
         $user = new changedInfo();
         $user->setCurrentRole($_POST['type']);
         $user->setFName($_POST['username']);
-        $user->setEmail($_POST['email']);
-        $user->setRole($_POST['userrole']);
-        $uname =   $user->getFName();
+        $user->setEmail($_POST['email']);        $uname =   $user->getFName();
 
         $email =    $user->getEmail();
 
-        $userrole =    $user->getRole();
 
         $type =   $user->getCurrentRole();
-        $sql = "UPDATE users SET username='$uname', email = '$email', usertype ='$userrole' WHERE  userID = '$type'";
+        $sql = "UPDATE users SET username='$uname', email = '$email' WHERE  userID = '$type'";
 
         if ($db->query($sql) === TRUE) {
-          echo "Record updated successfully";
+          echo "Record updated successfully <br>";
+          echo 'Return to  <a href="index.php?id=' . htmlentities($_GET['id']) . '">Home Page </a>.';
+
         } else {
           echo "Error updating record: " . $db->error;
         }
