@@ -105,7 +105,7 @@ include 'header.php'
                     $sql = "DELETE FROM topics WHERE topic_id = $id";
                     if (mysqli_query($db, $sql)) {
                         echo "<div class='center'>";
-                        echo "<p>You have deleted the category succesfully.</p>";
+                        echo "<p>You have deleted the topic succesfully.</p>";
                         echo "<div class='content-container'>";
                         echo 'Return to  <a href="index.php?id=) ">Home Page</a>.';
                         echo "</div>";

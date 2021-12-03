@@ -93,7 +93,7 @@ if (isset($_GET['logout'])) {
             } else {
                 if (count($errors) > 0) {
                     echo '  <div class="alert alert-primary" role="alert" style="margin: 1%">
-                                Return to  <a href="create_cat.php?id=">create category</a>.
+                                Return to  <a href="create_cat.php?id=">create a category</a>.
                             </div';
                 } else {
                     $catname = mysqli_real_escape_string($db, $_POST['cat_name']);

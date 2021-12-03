@@ -61,59 +61,6 @@
       </div>
     </div>
   </main>
-  
-  <!-- Original Code -->
-  
-  <!-- <main id="main" class="bg-dark">
-    <div id="login-left">
-    </div>
-    <div id="login-right">
-      <div class="card col-md-8">
-        <div class="white-box">
-          <form id="login-form" form method="POST" action="register.php">
-            <?// php include('errors.php'); ?>
-            <div class="input-group">
-              <div class="container">
-                <br>
-                <label for="username">&emsp; Username</label>
-                <center><input type="text" name="username" id="username" value=<?php echo $username; ?>></center>
-              </div>
-            </div>
-            <div class="input-group">
-              <div class="container">
-                <br>
-                <label for="username">&emsp; Email</label>
-                <center><input type="text" name="email" id="username" value="<?php echo $email; ?>"></center>
-              </div>
-            </div>
-            <div class="input-group">
-              <div class="container">
-                <br>
-                <label for="username">&emsp; Password</label>
-                <center><input type="password" id="pword" name="password_1"></center>
-              </div>
-            </div>
-            <div class="input-group">
-              <div class="form-group">
-                <div class="container">
-                  <br>
-                  <label for="password">&emsp;Confirm Password</label>
-                  <center><input type="password" id="password" name="password_2"></center>
-                </div>
-              </div>
-            </div>
-            <br>
-            <center><input type="submit" class="btn" name="reg_user" value="Register"></button></center>
-            <br>
-            <p>
-              <center>Already a member? <a href="login.php">Sign in</a></center>
-            </p>
-            <br>
-          </form>
-        </div>
-      </div>
-    </div>
-  </main> -->
 
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

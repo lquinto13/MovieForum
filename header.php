@@ -70,94 +70,68 @@ if (isset($_GET['logout'])) {
       <div class="d-flex align-items-center">
         <!-- User -->
         <?php
-          $db = new mysqli('localhost', 'root', '', 'movieforumdb');
-          $name = $_SESSION['username'];
-          $user_check_query = "SELECT  * FROM users WHERE username ='$name'";
-          $result = mysqli_query($db, $user_check_query);
-          $user = mysqli_fetch_assoc($result);
-          class User
+        $db = new mysqli('localhost', 'root', '', 'movieforumdb');
+        $name = $_SESSION['username'];
+        $user_check_query = "SELECT  * FROM users WHERE username ='$name'";
+        $result = mysqli_query($db, $user_check_query);
+        $user = mysqli_fetch_assoc($result);
+        class User
+        {
+          public $username;
+          public $usertype;
+
+          public function __construct($username, $usertype)
           {
-            public $username;
-            public $usertype;
-
-            public function __construct($username, $usertype)
-            {
-              $this->username = $username;
-              $this->usertype = $usertype;
-            }
+            $this->username = $username;
+            $this->usertype = $usertype;
           }
-          class Admin extends User
+        }
+        class Admin extends User
+        {
+          public function displayAdminPanel()
           {
-            public function displayAdminPanel()
-            {
-              echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
-              echo '<i class="fas fa-user-circle"  style = "padding-right: 5px;"></i>';
-              echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'> $this->username </strong>";
-              echo '</a>';
-              echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
-              echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/adminpage.php">Admin Controls</a></l1>';
-              echo '<li> <a class="dropdown-item" href="index.php?logout=" style="color: #F93154;">Logout</a>  </li>';
-              echo ' </ul>';
-            }
+            echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
+            echo '<i class="fas fa-user-circle"  style = "padding-right: 5px;"></i>';
+            echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'> $this->username </strong>";
+            echo '</a>';
+            echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
+            echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/adminpage.php">Admin Controls</a></l1>';
+            echo '<li> <a class="dropdown-item" href="index.php?logout=" style="color: #F93154;">Logout</a>  </li>';
+            echo ' </ul>';
           }
+        }
 
-          class Normal extends User
+        class Normal extends User
+        {
+          public function displayUserSettings()
           {
-            public function displayUserSettings()
-            {
-              echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
-              echo '<i class="fas fa-user-circle" style = "padding-right: 5px;"></i>';
-              echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'>$this->username </strong>";
-              echo '</a>';
-              echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
-              echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/usersettings.php">User Settings</a></l1>';
-              echo '<li> <a class="dropdown-item" href="index.php?logout=" style="color: #F93154;">Logout</a>  </li>';
-              echo ' </ul>';
-            }
+            echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
+            echo '<i class="fas fa-user-circle" style = "padding-right: 5px;"></i>';
+            echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'>$this->username </strong>";
+            echo '</a>';
+            echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
+            echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/usersettings.php">User Settings</a></l1>';
+            echo '<li> <a class="dropdown-item" href="index.php?logout=" style="color: #F93154;">Logout</a>  </li>';
+            echo ' </ul>';
           }
+        }
 
-          if ($user['usertype'] == 1) {
-            $admin = new Admin($name, 1);
-            $admin->displayAdminPanel();
-          } else {
-            $normal = new Normal($name, 2);
-            $normal->displayUserSettings();
-          }
+        if ($user['usertype'] == 1) {
+          $admin = new Admin($name, 1);
+          $admin->displayAdminPanel();
+        } else {
+          $normal = new Normal($name, 2);
+          $normal->displayUserSettings();
+        }
 
-          
-          ?>
+
+        ?>
       </div>
       <!-- Right elements -->
     </div>
     <!-- Container wrapper -->
   </nav>
   <!-- Navbar -->
-
-  <!-- Original Code -->
-
-  <!-- <div id="wrapper" class="topnav">
-    <h1 style="text-align:center; font-size: 50px">Movie Forum</h1>
-    <div id="menu">
-      <a class="item" href="/movieforum/index.php">Home</a>
-      <a class="item" href="/movieforum/create_topic.php">Create a topic</a>
-      <a class="item" href="/movieforum/create_cat.php">Create a category</a>
-      <a class="item" href="/movieforum/about_us.php">About Us</a>
-
-
-      <a href="index.php?logout='1'" style="color: red; float:right;">logout</a>
-      <p>Welcome <strong><? // php echo $_SESSION['username']; 
-                          ?></strong></p>
-
-
-      <br> <br>
-
-      <div id="userbar">
-      </div>
-    </div>
-  </div>
-
-  <div id="content">
-  </div> -->
 
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

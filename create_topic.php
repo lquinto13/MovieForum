@@ -163,7 +163,7 @@ if (isset($_GET['logout'])) {
 
                     if (count($errors) > 0) {
                         echo '  <div class="alert alert-primary" role="alert" style="margin: 1%">
-                                    Return to  <a href="create_topic.php?id=">create topic</a>.
+                                    Return to  <a href="create_topic.php?id=">create a topic</a>.
                                 </div>';
                     } else {
                         $topicid = mysqli_insert_id($db);

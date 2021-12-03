@@ -27,7 +27,7 @@
 
             <form id="login-form" form method="POST" action="login.php" style="width: 25rem;">
               <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log In</h3>
-  
+
               <div class="form-outline form-white mb-4">
                 <input type="text" id="username" name="username" class="form-control form-control-lg" />
                 <label class="form-label" for="username">Username</label>
@@ -51,51 +51,6 @@
       </div>
     </div>
   </main>
-
-  <!-- Original Code -->
-  
-  <!-- <main id="main" class="bg-dark">
-    <div id="login-left">
-    </div>
-    <div id="login-right">
-      <div class="card col-md-8">
-        <div class="white-box">
-          <form id="login-form" form method="POST" action="login.php">
-            <?// php include('errors.php'); ?>
-
-            <div class="form-group">
-              <div class="input-group">
-                <div class="container">
-                  <br>
-                  <label for="username">&emsp; Username</label>
-                  <center><input type="text" id="username" name="username"></center>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="container">
-                  <br>
-                  <label for="password">&emsp; Password</label>
-                  <center><input type="password" id="password" name="password"></center>
-                </div>
-              </div>
-            </div>
-            <div class="input-group">
-              <br>
-
-              <center><input type="submit" name="login_user" value="Login"></button></center>
-            </div>
-            <br>
-            <p>
-              <center>Not yet a member? <a href="register.php">Sign up</a></center>
-            </p>
-            <br>
-          </form>
-        </div>
-      </div>
-    </div>
-  </main> -->
 
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

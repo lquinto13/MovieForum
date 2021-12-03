@@ -100,7 +100,7 @@ include 'header.php'
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='center'>";
                     echo "<div class ='title-container'>";
-                    echo "<p>Are you sure you want to delete the " . $row['cat_name'] . " category.</p>";
+                    echo "<p>Are you sure you want to delete the " . $row['cat_name'] . " category?</p>";
                     echo "</div>";
                     echo "<div class ='content-container'>";
                     echo '<form method="POST" action="deleteconfirm.php?id ="> <button type = "submit" class = "yes" name = "yes" value= ' . $id . '>Yes </input> </form>';
