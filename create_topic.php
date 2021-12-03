@@ -184,11 +184,8 @@ if (isset($_GET['logout'])) {
                         $result = mysqli_query($db, $sql);
 
                         //after a lot of work, the query succeeded!
-                        echo '  <div class="alert alert-success" role="alert" style="margin: 1%">
+                        echo '  <div class="alert alert-success" role="alert">
                                     You have successfully created <a href="topic.php?id=' . $topicid . '">your new topic</a>.
-                                </div>
-                                <div class="alert alert-primary" role="alert" style="margin: 1%">
-                                    Return to  <a href="create_topic.php?id=">create a topic</a>.
                                 </div>';
                     }
                 }

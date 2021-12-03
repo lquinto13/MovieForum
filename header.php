@@ -91,7 +91,7 @@ if (isset($_GET['logout'])) {
             public function displayAdminPanel()
             {
               echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
-              echo '<i class="fas fa-user-circle" style = "padding-right: 5px;"></i>';
+              echo '<i class="fas fa-user-circle"></i>';
               echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'> $this->username </strong>";
               echo '</a>';
               echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
@@ -106,7 +106,7 @@ if (isset($_GET['logout'])) {
             public function displayUserSettings()
             {
               echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
-              echo '<i class="fas fa-user-circle" style = "padding-right: 5px;"></i>';
+              echo '<i class="fas fa-user-circle"></i>';
               echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'>$this->username </strong>";
               echo '</a>';
               echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';

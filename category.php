@@ -92,11 +92,22 @@ else
                       </tr>'; 
                       class AdminDelete
                       {
+                        private $id;
+                        function __construct($id) {
+                            $this->id = $id;
+                          }
+
+                          function get_name() {
+                            return $this->id;
+                          }
                           // Function geeks of parent class
                           function delete()
                           {
                               echo '<td class="rightpart">';
-                              echo '<button>Delete</button>';
+                              echo '<form method = "POST" action="cattopic-delete.php?id =">';
+                              echo '<button name = "delete"  value = ' . $this->id.'>Delete</button>';
+                              echo '</form>';
+                              echo $this->id;  
                               echo '</td>';
                           }
                       }
@@ -104,21 +115,27 @@ else
                       // This is child class
                       class Userdelete extends AdminDelete
                       {
-
+                        private $id;
+                        function __construct($id) {
+                            $this->id = $id;
+                          }
                           // Overriding geeks method
                           function delete()
                           {
                               echo '<td class="rightpart">';
-                              echo '<button>Delete</button>';
+                              echo '<form method = "POST" action="cattopic-delete.php?id">';
+                              echo '<button name = "delete"  value = ' . $this->id.'>Delete</button>';
+                              echo '</form>';
                               echo '</td>';
                           }
                       }
 
-                      $p = new AdminDelete;
-                      $c = new Userdelete;
+                     
                      
                 while($row = mysqli_fetch_assoc($result))
-                {               
+                {              
+                    $p = new AdminDelete($row['topic_id']);
+                    $c = new Userdelete($row['topic_id']); 
                     echo '<tr>';
                         echo '<td class="leftpart">';
                             echo '<h3><a href="topic.php?id=' . $row['topic_id'] . '">' . $row['topic_subject'] . '</a><h3>';
@@ -155,6 +172,7 @@ else
                         }else if($_SESSION['userID'] == $row['topic_by'])
                         {
                             $c->delete();
+                            $c->get_name();
                         }
                         
                     echo '</tr>';

@@ -92,9 +92,7 @@ if (isset($_GET['logout'])) {
                         </form>";
             } else {
                 if (count($errors) > 0) {
-                    echo '  <div class="alert alert-primary" role="alert" style="margin: 1%">
-                                Return to  <a href="create_cat.php?id=">create category</a>.
-                            </div>';
+                    echo 'Return to  <a href="create_cat.php?id=">create category</a>.';
                 } else {
                     $catname = mysqli_real_escape_string($db, $_POST['cat_name']);
                     $catdesc = mysqli_real_escape_string($db, $_POST['cat_description']);
@@ -106,12 +104,9 @@ if (isset($_GET['logout'])) {
                         //something went wrong, display the error
                         echo 'Error' . mysqli_error($db);
                     } else {
-                        echo '  <div class="alert alert-success" role="alert" style="margin: 1%">
-                                    New category successfully added.
-                                </div>
-                                <div class="alert alert-primary" role="alert" style="margin: 1%">
-                                    Return to  <a href="create_cat.php?id=">create a category</a>.
-                                </div>';
+                        echo '  <div class="alert alert-success" role="alert">
+                                New category successfully added.
+                            </div>';
                     }
                 }
             }

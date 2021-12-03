@@ -142,8 +142,10 @@ else
                                 WHERE
                                     userID = $id AND topic_id = $topic;";
                                 echo '<input type="hidden" name="like" value="'.$outsql.'" />';
-                                echo '<input type="button" disabled value="Like" />';
+								echo '<input type="hidden" name="id" value="'.$topic.'" />';
+                                echo '<input type="button" disabled value="Liked" />';
                                 echo '<input type="submit" value="Dislike" />';
+
                             }
                             else if($liked === false) {
                                 $outsql = "UPDATE likes 
@@ -152,18 +154,21 @@ else
                                 WHERE
                                     userID = $id AND topic_id = $topic;";
                                 echo '<input type="hidden" name="like" value="'.$outsql.'" />';
+								echo '<input type="hidden" name="id" value="'.$topic.'" />';
                                 echo '<input type="submit" value="Like" />';
                                 echo '<input type="button" disabled value="Dislike" />';
+
                             }
                             else {
                                 $outsql = "INSERT INTO likes (`userID`, `topic_id`, `isLike`) VALUES
                                 ($id, $topic, ";
                                 echo '<input type="hidden" name="like" value="'.$outsql.'" />';
+								echo '<input type="hidden" name="topicID" value="'.$topic.'" />';
                                 echo '<input type="submit" name="liked" value="Like" />';
                                 echo '<input type="submit" name="dis" value="Dislike" />';
                             }
                         echo '</td>';
-                    echo '</tr>';
+                    echo '</form>';
                     echo '</tr>';
              
         	while($row = mysqli_fetch_assoc($result) )
@@ -229,7 +234,7 @@ else
 			  <center><h3> '. $title['topic_subject'] .' </h3></center>
 			  </td>'; 
 
-			  echo '<form method="POST" action="topic.php">';
+			  echo '<form method="POST" action="topic.php?='.$topic.'">';
                         echo '<td>';
                             if($liked === true) {
                                 $outsql = "UPDATE likes 
@@ -238,7 +243,8 @@ else
                                 WHERE
                                     userID = $id AND topic_id = $topic;";
                                 echo '<input type="hidden" name="like" value="'.$outsql.'" />';
-                                echo '<input type="button" disabled value="Like" />';
+								echo '<input type="hidden" name="id" value="'.$topic.'" />';
+                                echo '<input type="button" disabled value="Liked" />';
                                 echo '<input type="submit" value="Dislike" />';
                             }
                             else if($liked === false) {
@@ -248,17 +254,20 @@ else
                                 WHERE
                                     userID = $id AND topic_id = $topic;";
                                 echo '<input type="hidden" name="like" value="'.$outsql.'" />';
+								echo '<input type="hidden" name="id" value="'.$topic.'" />';
                                 echo '<input type="submit" value="Like" />';
-                                echo '<input type="button" disabled value="Dislike" />';
+                                echo '<input type="button" disabled value="Disliked" />';
                             }
                             else {
                                 $outsql = "INSERT INTO likes (`userID`, `topic_id`, `isLike`) VALUES
                                 ($id, $topic, ";
                                 echo '<input type="hidden" name="like" value="'.$outsql.'" />';
+								echo '<input type="hidden" name="id" value="'.$topic.'" />';
                                 echo '<input type="submit" name="liked" value="Like" />';
                                 echo '<input type="submit" name="dis" value="Dislike" />';
                             }
                         echo '</td>';
+						echo '</form>';
                     echo '</tr>';
 		 while($row = mysqli_fetch_assoc($result) )
 		 {               
@@ -322,15 +331,22 @@ else {
     $db = mysqli_connect('localhost', 'root', '', 'movieforumdb');
     if(isset($_POST['liked'])) {
         $outsql = $_POST['like'] . "true)";
-        echo "Liked";
+		$topicID = $_POST['id'];
+        echo "Liked <br>";
+		echo 'Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.';
     }
     else if(isset($_POST['dis'])) {
         $outsql = $_POST['like'] . "false)";
-        echo "Disliked";
+		$topicID = $_POST['id'];
+        echo "Disliked <br>";
+		echo 'Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.';
+
     }
     else {
         $outsql = $_POST['like'];
-        echo "Updated";
+		$topicID = $_POST['id'];
+		echo "Updated <br>";
+		echo 'Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.';
     }
     $out = mysqli_query($db, $outsql);
 }
