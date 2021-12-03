@@ -15,6 +15,12 @@ if (isset($_POST['create-cat'])) {
     array_push($errors, "Please input a category name ");
     array_push($errors, "Please input a category description ");
   }
+  else if (empty($category)) {
+    array_push($errors, "Please input a category name ");
+  }
+  else if (empty($description)) {
+    array_push($errors, "Please input a category description ");
+  }
 
 
   $sql_u = "SELECT * FROM categories WHERE cat_name='$category'";

@@ -48,3 +48,8 @@ table a:visited {
     border-color: #262626;
 } */
 /*------------------------------------------*/
+
+form{
+    background: none;
+    border: none;
+}
