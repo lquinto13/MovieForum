@@ -90,7 +90,7 @@ if (isset($_GET['logout'])) {
                 } else {
                     //display category data
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<center> <h2 class="display-3" style="margin-top: 2%;">Topics in the \'' . $row['cat_name'] . '\' category</h2> </center>';
+                        echo '<center> <h2 class="rounded display-3" style="border: solid; width: max-content; margin-top: 2%;">Topics in the \'' . $row['cat_name'] . '\' category</h2> </center>';
                     }
 
                     //do a query for the topics
