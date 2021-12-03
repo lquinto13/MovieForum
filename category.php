@@ -152,7 +152,7 @@ if (isset($_GET['logout'])) {
                                 {
                                     echo '  <td>
                                                 <form method = "POST" action="cattopic-delete.php?id =">
-                                                    <button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button>
+                                                    <center><button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button></center>
                                                 </form>';
                                     echo '  </td>';
                                 }
@@ -171,7 +171,7 @@ if (isset($_GET['logout'])) {
                                 {
                                     echo '  <td>
                                                 <form method = "POST" action="cattopic-delete.php?id =">
-                                                    <button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button>
+                                                    <center><button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button></center>
                                                 </form>';
                                     echo '  </td>';
                                 }

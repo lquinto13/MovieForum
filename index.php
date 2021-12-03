@@ -119,7 +119,7 @@ if (isset($_GET['logout'])) {
 							echo '				<h3><a href="category.php?id=' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</a></h3></td>' . '<td><h5>' . strtoupper($row['cat_description']) . '</h5></td>';
 							echo '			<td>
 												<form method = "POST" action="delete.php?id =">
-													<button type="submit" name = "delete"  value = ' . $row['cat_id'] . 'class="btn btn-danger">DELETE</button>
+													<center><button type="submit" name = "delete" class="btn btn-danger value = ' . $row['cat_id'] . '">DELETE</button></center>
 												</form>
 											</td>
 										</tr>';
