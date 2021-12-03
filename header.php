@@ -91,7 +91,7 @@ if (isset($_GET['logout'])) {
             public function displayAdminPanel()
             {
               echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
-              echo '<i class="fas fa-user-circle"></i>';
+              echo '<i class="fas fa-user-circle"  style = "padding-right: 5px;"></i>';
               echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'> $this->username </strong>";
               echo '</a>';
               echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
@@ -106,7 +106,7 @@ if (isset($_GET['logout'])) {
             public function displayUserSettings()
             {
               echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
-              echo '<i class="fas fa-user-circle"></i>';
+              echo '<i class="fas fa-user-circle" style = "padding-right: 5px;"></i>';
               echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'>$this->username </strong>";
               echo '</a>';
               echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
@@ -166,7 +166,7 @@ if (isset($_GET['logout'])) {
   <!-- Bootstrap Script -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <!-- MDB Script -->
-  <script type="text/javascript" src="mdb-bootstrap-3.10.1/js/mdb.min.js"></script>
+  <!-- <script type="text/javascript" src="mdb-bootstrap-3.10.1/js/mdb.min.js"></script> -->
 
   <script>
     $("#menu-toggle").click(function(e) {

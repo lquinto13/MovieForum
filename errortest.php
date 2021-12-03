@@ -14,6 +14,10 @@ if (isset($_POST['create-cat'])) {
   if (empty($category) && empty($description)) {
     array_push($errors, "Please input a category name ");
     array_push($errors, "Please input a category description ");
+  } else if (empty($category)) {
+    array_push($errors, "Please input a category name ");
+  } else if (empty($description)) {
+    array_push($errors, "Please input a category description ");
   }
 
 

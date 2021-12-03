@@ -161,15 +161,13 @@ if (isset($_GET['logout'])) {
                     //the first query worked, now start the second, posts query
                     //retrieve the id of the freshly created topic for usage in the posts query
 
-                    if($errors > 0)
-                    {
-                        echo 'Return to  <a href="create_topic.php?id=">create topic</a>.';
-
-                    }
-                    else
-                    {
+                    if ($errors > 0) {
+                        echo '  <div class="alert alert-primary" role="alert" style="margin: 1%">
+                                    Return to  <a href="create_topic.php?id=">create topic</a>.
+                                </div>';
+                    } else {
                         $topicid = mysqli_insert_id($db);
-                         $sql = "INSERT INTO
+                        $sql = "INSERT INTO
                             posts(post_content,
                                   post_date,
                                   post_topic,
@@ -180,26 +178,26 @@ if (isset($_GET['logout'])) {
                                   " . $topicid . ",
                                   " . $user['userID']  . "
                             )";
-                    $result = mysqli_query($db, $sql);
-
-                    if (!$result) {
-                        //something went wrong, display the error
-                        echo 'An error occured while inserting your post. Please try again later.' . mysqli_error($db);
-                        $sql = "ROLLBACK;";
-                        $result = mysqli_query($db, $sql);
-                    } else {
-                        $sql = "COMMIT;";
                         $result = mysqli_query($db, $sql);
 
-                        //after a lot of work, the query succeeded!
-                        echo '  <div class="alert alert-success" role="alert">
+                        if (!$result) {
+                            //something went wrong, display the error
+                            echo 'An error occured while inserting your post. Please try again later.' . mysqli_error($db);
+                            $sql = "ROLLBACK;";
+                            $result = mysqli_query($db, $sql);
+                        } else {
+                            $sql = "COMMIT;";
+                            $result = mysqli_query($db, $sql);
+
+                            //after a lot of work, the query succeeded!
+                            echo '  <div class="alert alert-success" role="alert" style="margin: 1%">
                                     You have successfully created <a href="topic.php?id=' . $topicid . '">your new topic</a>.
+                                </div>
+                                <div class="alert alert-primary" role="alert" style="margin: 1%">
+                                    Return to  <a href="create_topic.php?id=">create a topic</a>.
                                 </div>';
+                        }
                     }
-                    }
-                    
-
-                   
                 }
             }
             ?>
