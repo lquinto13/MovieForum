@@ -53,3 +53,12 @@ form{
     background: none;
     border: none;
 }
+
+/*------------------------------------------*/
+
+#title-style{
+    border: solid; 
+    width: max-content; 
+    padding: 5px; 
+    margin-top: 2%;
+}
