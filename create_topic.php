@@ -69,7 +69,8 @@ if (isset($_GET['logout'])) {
             //the form hasn't been posted yet, display it
             //retrieve the categories from the database for use in the dropdown
             $db = new mysqli('localhost', 'root', '', 'movieforumdb');
-
+            include('createtopic-errors.php');
+            include('errors.php');
             if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                 $sql = "SELECT cat_id, cat_name, cat_description FROM categories";
 
@@ -118,7 +119,7 @@ if (isset($_GET['logout'])) {
                                     </div>
 
                                     <!-- Submit Button -->
-                                    <button type="submit" class="btn btn-primary btn-block mb-4">Create Topic</button>
+                                    <button type="submit" name = "create-topic" class="btn btn-primary btn-block mb-4">Create Topic</button>
 
                                 </form>';
                     }
@@ -159,9 +160,16 @@ if (isset($_GET['logout'])) {
                 } else {
                     //the first query worked, now start the second, posts query
                     //retrieve the id of the freshly created topic for usage in the posts query
-                    $topicid = mysqli_insert_id($db);
 
-                    $sql = "INSERT INTO
+                    if($errors > 0)
+                    {
+                        echo 'Return to  <a href="create_topic.php?id=">create topic</a>.';
+
+                    }
+                    else
+                    {
+                        $topicid = mysqli_insert_id($db);
+                         $sql = "INSERT INTO
                             posts(post_content,
                                   post_date,
                                   post_topic,
@@ -188,6 +196,10 @@ if (isset($_GET['logout'])) {
                                     You have successfully created <a href="topic.php?id=' . $topicid . '">your new topic</a>.
                                 </div>';
                     }
+                    }
+                    
+
+                   
                 }
             }
             ?>

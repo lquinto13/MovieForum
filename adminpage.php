@@ -158,9 +158,6 @@ else
                       <tr>
                         <th>User Info</th>
                         <th>Change   Info</th>
-
-                        
-    
                       </tr>'; 
                 while($row = mysqli_fetch_assoc($result) )
                 {   
