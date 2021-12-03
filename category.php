@@ -90,7 +90,6 @@ if (isset($_GET['logout'])) {
                 } else {
                     //display category data
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<div class="container-fluid">';
                         echo '<center> <h1 class="rounded" id = "title-style">Topics in the \'' . $row['cat_name'] . '\' category</h1> </center>';
                     }
 
@@ -151,7 +150,7 @@ if (isset($_GET['logout'])) {
                                 // Function geeks of parent class
                                 function delete()
                                 {
-                                    echo '  <td style="cell-padding: 5px;">
+                                    echo '  <td>
                                                 <form method = "POST" action="cattopic-delete.php?id =">
                                                     <button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button>
                                                 </form>';
