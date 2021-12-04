@@ -11,12 +11,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- MDB Style -->
   <link rel="stylesheet" href="mdb-bootstrap-3.10.1/css/mdb.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
   <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/register.css">
 </head>
 
 <body>
-  <main id="main" class="vh-100">
+  <main id="main" class="vh-100 bg-dark">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-8 px-0 d-none d-sm-block vh-100 gradient-background">
@@ -48,7 +51,11 @@
                 <label class="form-label" for="password_2">Confirm Password</label>
               </div>
 
-              <?php include('errors.php'); ?>
+              <?php if (count($errors) > 0) : ?>
+                <?php foreach ($errors as $error) : ?>
+                  <p style="color: #F93154;"><i class="fas fa-exclamation-circle"></i> <?php echo $error ?></p>
+                <?php endforeach ?>
+              <?php endif ?>
 
               <div class="pt-1 mb-4">
                 <button class="btn btn-info btn-lg btn-block" type="submit" name="reg_user">Register</button>

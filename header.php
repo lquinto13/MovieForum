@@ -44,7 +44,7 @@ if (isset($_GET['logout'])) {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
         <!-- <span class="navbar-brand mb-0 h1">
-          <i class="fas fa-film" style="padding-right: 5px; color: #FF8FAB;"></i>
+          <i class="fas fa-film logo-title"></i>
           <strong>MOVIE FORUM</strong>
         </span> -->
         <!-- Left links -->
@@ -92,7 +92,7 @@ if (isset($_GET['logout'])) {
           {
             echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
             echo '<i class="fas fa-user-circle"  style = "padding-right: 5px;"></i>';
-            echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'> $this->username </strong>";
+            echo "Welcome, <strong style='color: #FF548C; padding-left: 4px'> $this->username </strong>";
             echo '</a>';
             echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
             echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/adminpage.php">Admin Controls</a></l1>';
@@ -107,7 +107,7 @@ if (isset($_GET['logout'])) {
           {
             echo '<a class="navbar-brand me-3 dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
             echo '<i class="fas fa-user-circle" style = "padding-right: 5px;"></i>';
-            echo "Welcome, <strong style='color: #FF8FAB; padding-left: 4px'>$this->username </strong>";
+            echo "Welcome, <strong style='color: #FF548C; padding-left: 4px'>$this->username </strong>";
             echo '</a>';
             echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
             echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/usersettings.php">User Settings</a></l1>';

@@ -4,7 +4,7 @@
 <?php if (count($errors) > 0) : ?>
 	<div class="alert alert-danger" role="alert" style="margin: 1%">
 		<?php foreach ($errors as $error) : ?>
-			<p><i class="fas fa-exclamation-circle"></i> <?php echo $error ?></p>
+			<p style="color: #F93154;"><i class="fas fa-exclamation-circle"></i> <?php echo $error ?></p>
 		<?php endforeach ?>
 	</div>
 <?php endif ?>

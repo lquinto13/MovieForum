@@ -23,6 +23,7 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
     <!-- Custom Styles -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar-header-sidebar.css">
 </head>
 
 <body>
@@ -30,7 +31,7 @@ if (isset($_GET['logout'])) {
         <!-- Sidebar-->
         <div class="bg-dark border-right" id="sidebar-wrapper">
             <div class="sidebar-heading" id="sidebar-heading">
-                <i class="fas fa-film" style="padding-right: 5px; color: #FF8FAB;"></i>
+                <i class="fas fa-film logo-title"></i>
                 <strong>MOVIE FORUM</strong>
             </div>
             <div class="list-group list-group-flush" id="button-sidebar">
@@ -72,7 +73,7 @@ if (isset($_GET['logout'])) {
             include('errors.php');
             if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                 //the form hasn't been posted yet, display it
-                echo "  <form method='post' action='' style='padding: 2%; margin-top: 2%;'>
+                echo "  <form method='post' action='' class='create-form shadow'>
                             <h2 style = text-align:center>Create a Category</h2>
 
                             <!-- Name input -->

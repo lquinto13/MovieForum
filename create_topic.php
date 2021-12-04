@@ -24,6 +24,7 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
     <!-- Custom Styles -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar-header-sidebar.css">
 </head>
 
 <body>
@@ -31,7 +32,7 @@ if (isset($_GET['logout'])) {
         <!-- Sidebar-->
         <div class="bg-dark border-right" id="sidebar-wrapper">
             <div class="sidebar-heading" id="sidebar-heading">
-                <i class="fas fa-film" style="padding-right: 5px; color: #FF8FAB;"></i>
+                <i class="fas fa-film logo-title"></i>
                 <strong>MOVIE FORUM</strong>
             </div>
             <div class="list-group list-group-flush" id="button-sidebar">
@@ -92,7 +93,7 @@ if (isset($_GET['logout'])) {
                             echo 'Before you can post a topic, you must wait for an admin to create some categories.';
                         }
                     } else {
-                        echo '  <form method="POST" action="create_topic.php" style="padding: 2%; margin-top: 2%;">
+                        echo '  <form method="POST" action="create_topic.php" class="create-form shadow">
                                     <h2 style = text-align:center>Create a Topic</h2>
 
                                     <!-- Subject Input and Category Select -->
@@ -191,8 +192,8 @@ if (isset($_GET['logout'])) {
 
                             //after a lot of work, the query succeeded!
                             echo '  <div class="alert alert-success" role="alert" style="margin: 1%">
-                                    You have successfully created <a href="topic.php?id=' . $topicid . '">your new topic</a>.
-                                </div>
+                                        You have successfully created <a href="topic.php?id=' . $topicid . '">your new topic</a>.
+                                    </div>
                                 <div class="alert alert-primary" role="alert" style="margin: 1%">
                                     Return to  <a href="create_topic.php?id=">create a topic</a>.
                                 </div>';

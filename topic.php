@@ -16,6 +16,16 @@ if (isset($_GET['logout'])) {
 
 <head>
 	<title>Home</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- MDB Style -->
+	<link rel="stylesheet" href="mdb-bootstrap-3.10.1/css/mdb.min.css" />
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+	<!-- Custom Styles -->
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/topic.css" />
 </head>
 <!-- <style>
 	* {
@@ -36,7 +46,7 @@ if (isset($_GET['logout'])) {
 		<!-- Sidebar-->
 		<div class="bg-dark border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading" id="sidebar-heading">
-				<i class="fas fa-film" style="padding-right: 5px; color: #FF8FAB;"></i>
+				<i class="fas fa-film logo-title"></i>
 				<strong>MOVIE FORUM</strong>
 			</div>
 			<div class="list-group list-group-flush" id="button-sidebar">
@@ -70,7 +80,6 @@ if (isset($_GET['logout'])) {
 		<div id="page-content-wrapper">
 			<?php include 'header.php' ?>
 			<!-- Page content-->
-
 			<?php
 			//create_cat.php
 			$db = new mysqli('localhost', 'root', '', 'movieforumdb');
@@ -112,10 +121,14 @@ if (isset($_GET['logout'])) {
 				$result7 = $db->query($sql);
 
 				if (!$result) {
-					echo 'The categories could not be displayed, please try again later.';
+					echo '	<div class="alert alert-danger" role="alert" style="margin: 1%">
+								<i class="fas fa-exclamation-circle"></i> The categories could not be displayed, please try again later.
+							</div>';
 				} else {
 					if (mysqli_num_rows($result) == 0) {
-						echo 'No categories defined yet.';
+						echo '	<div class="alert alert-danger" role="alert" style="margin: 1%">
+									<i class="fas fa-exclamation-circle"></i> No categories defined yet.
+								</div>';
 					} else {
 
 						$name = $_SESSION['username'];
@@ -141,19 +154,15 @@ if (isset($_GET['logout'])) {
 							}
 						}
 
-
 						if ($user['usertype'] == 1) {
-							//prepare the table
 
+							echo '	<div class="row">
+										<div class="col-md-3">
+										</div>
 
-							echo "<br>";
-							echo '<center> <table border="1" > </center>
-									<tr>
-									<td class="bottomreply" colspan= "2">
-									<center><h3> ' . $title['topic_subject'] . ' </h3></center>
-									</td>';
+										<div class="col-md-6">';
+							echo '<center> <h1 class="rounded" id = "title-style">' . $title['topic_subject'] . '</h1> </center>';
 							echo '<form method="POST" action="topic.php">';
-							echo '<td>';
 							if ($liked === true) {
 								$outsql = "UPDATE likes 
                                 SET 
@@ -162,8 +171,10 @@ if (isset($_GET['logout'])) {
                                     userID = $id AND topic_id = $topic;";
 								echo '<input type="hidden" name="like" value="' . $outsql . '" />';
 								echo '<input type="hidden" name="id" value="' . $topic . '" />';
-								echo '<input type="button" disabled value="Liked" />';
-								echo '<input type="submit" value="Dislike" />';
+								echo '<center>';
+								echo '<input class="btn btn-dark like-button" type="button" disabled value="Liked" />';
+								echo '<input class="btn btn-danger" type="submit" value="Dislike" />';
+								echo '</center>';
 							} else if ($liked === false) {
 								$outsql = "UPDATE likes 
                                 SET 
@@ -172,72 +183,96 @@ if (isset($_GET['logout'])) {
                                     userID = $id AND topic_id = $topic;";
 								echo '<input type="hidden" name="like" value="' . $outsql . '" />';
 								echo '<input type="hidden" name="id" value="' . $topic . '" />';
-								echo '<input type="submit" value="Like" />';
-								echo '<input type="button" disabled value="Dislike" />';
+								echo '<center>';
+								echo '<input class="btn btn-success like-button" type="submit" value="Like" />';
+								echo '<input class="btn btn-dark" type="button" disabled value="Dislike" />';
+								echo '</center>';
 							} else {
 								$outsql = "INSERT INTO likes (`userID`, `topic_id`, `isLike`) VALUES
                                 ($id, $topic, ";
 								echo '<input type="hidden" name="like" value="' . $outsql . '" />';
 								echo '<input type="hidden" name="topicID" value="' . $topic . '" />';
-								echo '<input type="submit" name="liked" value="Like" />';
-								echo '<input type="submit" name="dis" value="Dislike" />';
+								echo '<center>';
+								echo '<input class="btn btn-success like-button" type="submit" name="liked" value="Like" />';
+								echo '<input class="btn btn-danger" type="submit" name="dis" value="Dislike" />';
+								echo '</center>';
 							}
-							echo '</td>';
 							echo '</form>';
-							echo '</tr>';
+
+							echo '		</div>
+							
+										<div class="col-md-3">
+										</div>
+									</div>';
+
+							//prepare the table
+
+							echo '	<div class="rounded reply-card-container col-md-12">';
+
 
 							while ($row = mysqli_fetch_assoc($result)) {
 								if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-									echo '<tr>';
-									echo '<td class="leftpart">';
-									echo '<h3>' . $row['username'] . '</h3>';
-									echo '<br>' . '<h3>' . $row['post_date'] . '</h3>';
-									echo '<td class="rightpart">';
-									echo '<h3><p ">' . $row['post_content'] . '</p>';
-									echo '</td>';
-									echo '</tr>';
-									echo '<tr>';
-
-									echo '</tr>';
+									echo '
+									<div class="inner-main-body p-2 p-sm-3">
+											<div class="card mb-1">
+												<div class="card-body p-2 p-sm-3">
+													<div class="media">
+														<div class="media-body">
+															<h5 class="text-body">' . $row['username'] . '</h5>
+															<p class="reply-text">'
+															. $row['post_content'] .
+															'</p>
+															<p class="text-muted">sent on <span class="reply-text font-weight-bold">' . $row['post_date'] . '</span></p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>';
 								} else {
 									$sql = "INSERT INTO 
-                    posts(post_content,
-                          post_date,
-                          post_topic,
-                          post_by) 
-                VALUES ('" . $_POST['reply-content'] . "',
-                        NOW(),
-                        " . mysqli_real_escape_string($db, $_GET['id']) . ",
-                        " . $user['username'] . ")";
+										posts(post_content,
+											post_date,
+											post_topic,
+											post_by) 
+									VALUES ('" . $_POST['reply-content'] . "',
+											NOW(),
+											" . mysqli_real_escape_string($db, $_GET['id']) . ",
+											" . $user['username'] . ")";
 
 									$result = mysqli_query($db, $sql);
 
 									if (!$result) {
-										echo 'Your reply has not been saved, please try again later.';
+										echo '	<div class="alert alert-danger" role="alert" style="margin: 1%">
+													<i class="fas fa-exclamation-circle"></i> Your reply has not been saved, please try again later.
+												</div>';
 									} else {
-										echo 'Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.';
+										echo '	<div class="alert alert-success" role="alert" style="margin: 1%">
+													Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.
+												</div>';
 									}
 								}
 							}
+							echo ' </div>';
+
 							$row = mysqli_fetch_assoc($result7);
-							echo '<td class="bottomreply" colspan= "2">';
-							echo '<center>Reply:<br>';
-							echo "<br>";
-							echo '<form method="post" action="reply.php?id=' . $row['post_topic'] . '">
-					   <textarea name="reply-content"></textarea>
-					   <input type="submit" value="Submit reply" />
-				   </form> ';
-							echo '</td>';
-							echo '</tr>';
+
+							echo '	<form class="create-reply-form" method="post" action="reply.php?id=' . $row['post_topic'] . '">
+										<div class="form-outline mb-2">
+											<textarea class="form-control create-reply-textarea" id="reply-content" name="reply-content" rows="8"></textarea>
+											<label class="form-label" for="reply-content">Reply</label>
+										</div>
+										<input class="btn btn-primary btn-lg btn-block" type="submit" value="Submit reply" />
+									</form> ';
+
 						} else {
 							//prepare the table
 
 							echo "<br>";
 							echo '<center> <table border="1" > </center>
-			  <tr>
-			  <td class="bottomreply" colspan= "2">
-			  <center><h3> ' . $title['topic_subject'] . ' </h3></center>
-			  </td>';
+								<tr>
+								<td class="bottomreply" colspan= "2">
+								<center><h3> ' . $title['topic_subject'] . ' </h3></center>
+								</td>';
 
 							echo '<form method="POST" action="topic.php?=' . $topic . '">';
 							echo '<td>';
@@ -285,21 +320,25 @@ if (isset($_GET['logout'])) {
 									echo '<tr>';
 								} else {
 									$sql = "INSERT INTO 
-				posts(post_content,
-					  post_date,
-					  post_topic,
-					  post_by) 
-			VALUES ('" . $_POST['reply-content'] . "',
-					NOW(),
-					" . mysqli_real_escape_string($db, $_GET['id']) . ",
-					" . $user['username'] . ")";
+										posts(post_content,
+											post_date,
+											post_topic,
+											post_by) 
+									VALUES ('" . $_POST['reply-content'] . "',
+											NOW(),
+											" . mysqli_real_escape_string($db, $_GET['id']) . ",
+											" . $user['username'] . ")";
 
 									$result = mysqli_query($db, $sql);
 
 									if (!$result) {
-										echo 'Your reply has not been saved, please try again later.';
+										echo '	<div class="alert alert-danger" role="alert" style="margin: 1%">
+													<i class="fas fa-exclamation-circle"></i> Your reply has not been saved, please try again later.
+												</div>';
 									} else {
-										echo 'Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.';
+										echo '	<div class="alert alert-success" role="alert" style="margin: 1%">
+													Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.
+												</div>';
 									}
 								}
 							}
@@ -308,9 +347,9 @@ if (isset($_GET['logout'])) {
 							echo '<center>Reply:<br>';
 							echo "<br>";
 							echo '<form method="post" action="reply.php?id=' . $row['post_topic'] . '">
-					<textarea name="reply-content"></textarea>
-					<input type="submit" value="Submit reply" />
-				</form> ';
+									<textarea name="reply-content"></textarea>
+									<input type="submit" value="Submit reply" />
+								</form> ';
 							echo '</td>';
 							echo '</tr>';
 						}
@@ -340,6 +379,14 @@ if (isset($_GET['logout'])) {
 		</div>
 	</div>
 
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<!-- Bootstrap Script -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- MDB Script -->
+	<script type="text/javascript" src="mdb-bootstrap-3.10.1/js/mdb.min.js"></script>
 </body>
 
 </html>

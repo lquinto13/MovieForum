@@ -36,7 +36,7 @@ tbody {
 table a,
 table a:link,
 table a:visited {
-    color: #FF8FAB;
+    color: #FF548C;
 }
 
 /* .table-striped > tbody > tr:nth-child(odd) > td,
@@ -47,18 +47,5 @@ table a:visited {
 .table.table-bordered > tbody > tr > td {
     border-color: #262626;
 } */
-/*------------------------------------------*/
-
-form{
-    background: none;
-    border: none;
-}
 
 /*------------------------------------------*/
-
-#title-style{
-    border: solid; 
-    width: max-content; 
-    padding: 5px; 
-    margin-top: 2%;
-}

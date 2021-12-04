@@ -25,16 +25,16 @@ if (isset($_GET['logout'])) {
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
   <!-- Custom Styles -->
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/navbar-header-sidebar.css">
   <link rel="stylesheet" type="text/css" href="css/about-us.css">
 </head>
 
-<body>
+<body class="bg-light">
   <div class="d-flex" id="wrapper">
     <!-- Sidebar-->
     <div class="bg-dark border-right" id="sidebar-wrapper">
       <div class="sidebar-heading" id="sidebar-heading">
-        <i class="fas fa-film" style="padding-right: 5px; color: #FF8FAB;"></i>
+        <i class="fas fa-film logo-title"></i>
         <strong>MOVIE FORUM</strong>
       </div>
       <div class="list-group list-group-flush" id="button-sidebar">

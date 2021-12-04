@@ -35,6 +35,12 @@
 }
 
 /*------------------------------------------*/
+.logo-title{
+  padding-right: 5px; 
+  color: #FF548C;
+}
+
+/*------------------------------------------*/
 
 /* icons for sidebar buttons styling */
 .button-icon{
@@ -62,7 +68,7 @@
 
 #button-sidebar a:focus{
   font-weight: bold;
-  color:#FF8FAB;
+  color:#FF548C;
 }
 /* end of sidebar button styling */
 
@@ -75,7 +81,7 @@
 
 #content-management-button[aria-expanded="true"]{
   font-weight: bold;
-  color: #FF8FAB;
+  color: #FF548C;
 }
 /* end of content management button styling */
 

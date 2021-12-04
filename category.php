@@ -25,6 +25,7 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
     <!-- Custom Styles -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar-header-sidebar.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
 </head>
 
@@ -33,7 +34,7 @@ if (isset($_GET['logout'])) {
         <!-- Sidebar-->
         <div class="bg-dark border-right" id="sidebar-wrapper">
             <div class="sidebar-heading" id="sidebar-heading">
-                <i class="fas fa-film" style="padding-right: 5px; color: #FF8FAB;"></i>
+                <i class="fas fa-film logo-title"></i>
                 <strong>MOVIE FORUM</strong>
             </div>
             <div class="list-group list-group-flush" id="button-sidebar">
@@ -124,7 +125,7 @@ if (isset($_GET['logout'])) {
                         } else {
                             //prepare the table
                             echo '	<div class="rounded table-with-FixHead table-bordered">
-                                        <table class="table table-bordered table-striped table-dark text-center">
+                                        <table class="table table-striped table-dark text-center">
                                             <thead>
                                                 <tr>
                                                     <th scope="col"><h4>Topic</h4></th>
@@ -151,7 +152,7 @@ if (isset($_GET['logout'])) {
                                 function delete()
                                 {
                                     echo '  <td>
-                                                <form method = "POST" action="cattopic-delete.php?id =">
+                                                <form method = "POST" style="width: auto;" action="cattopic-delete.php?id =">
                                                     <button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button>
                                                 </form>';
                                     echo '  </td>';
@@ -170,7 +171,7 @@ if (isset($_GET['logout'])) {
                                 function delete()
                                 {
                                     echo '  <td>
-                                                <form method = "POST" action="cattopic-delete.php?id =">
+                                                <form method = "POST" style="width: auto;" action="cattopic-delete.php?id =">
                                                     <button type="submit" name = "delete" class="btn btn-danger" value = ' . $this->id . '>DELETE</button>
                                                 </form>';
                                     echo '  </td>';
@@ -196,7 +197,7 @@ if (isset($_GET['logout'])) {
                                 $result3 = mysqli_query($db, $likesql);
                                 $likes = 0;
                                 $liked = NULL;
-                                $rate = "No rating";
+                                $rate = "No Rating";
 
                                 if (!mysqli_num_rows($result3) == 0) {
                                     while ($row2 = mysqli_fetch_assoc($result3)) {

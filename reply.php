@@ -62,10 +62,14 @@ include('header.php');
                     $result = mysqli_query($db, $sql);
 
                     if (!$result) {
-                        echo 'Your reply has not been saved, please try again later.';
+                        echo '  <div class="alert alert-danger" role="alert" style="margin: 1%">
+                                    <i class="fas fa-exclamation-circle"></i> Your reply has not been saved, please try again later.
+                                </div>';
                         echo mysqli_error($db);
                     } else {
-                        echo 'Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.';
+                        echo '  <div class="alert alert-success" role="alert" style="margin: 1%">
+                                    Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.
+                                </div>';
                     }
                 }
             }
