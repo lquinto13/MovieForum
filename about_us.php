@@ -93,7 +93,7 @@ if (isset($_GET['logout'])) {
           <div class="row text-center">
             <!-- Team item-->
             <div class="col-xl-3 col-sm-6 mb-5">
-              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="40%" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                 <h5 class="mb-0">Aguayo, Jason</h5><span class="small text-uppercase text-muted">4 - ITF</span>
               </div>
             </div>
@@ -101,7 +101,7 @@ if (isset($_GET['logout'])) {
 
             <!-- Team item-->
             <div class="col-xl-3 col-sm-6 mb-5">
-              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="40%" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                 <h5 class="mb-0">Quinto, Lance</h5><span class="small text-uppercase text-muted">4 - ITF</span>
               </div>
             </div>
@@ -109,7 +109,7 @@ if (isset($_GET['logout'])) {
 
             <!-- Team item-->
             <div class="col-xl-3 col-sm-6 mb-5">
-              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="40%" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                 <h5 class="mb-0">Soriano, Adrian</h5><span class="small text-uppercase text-muted">4 - ITF</span>
               </div>
             </div>
@@ -117,7 +117,7 @@ if (isset($_GET['logout'])) {
 
             <!-- Team item-->
             <div class="col-xl-3 col-sm-6 mb-5">
-              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="40%" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                 <h5 class="mb-0">Yao, Hizon</h5><span class="small text-uppercase text-muted">4 - ITF</span>
               </div>
             </div>
