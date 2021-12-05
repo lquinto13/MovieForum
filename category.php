@@ -134,8 +134,13 @@ if (isset($_GET['logout'])) {
                             if ($_SESSION['role'] == 1) {
                                 echo '              <th scope="col"><h4>Action</h4></th> ';
                             }
+                            else{
+                                echo '              <th scope="col"><h4>Action</h4></th> ';
+
+                            }
                             echo '               </tr>
                                             </thead>';
+                          
                             class AdminDelete
                             {
                                 private $id;

@@ -191,7 +191,7 @@ if (isset($_GET['logout'])) {
 								$outsql = "INSERT INTO likes (`userID`, `topic_id`, `isLike`) VALUES
                                 ($id, $topic, ";
 								echo '<input type="hidden" name="like" value="' . $outsql . '" />';
-								echo '<input type="hidden" name="topicID" value="' . $topic . '" />';
+								echo '<input type="hidden" name="id" value="' . $topic . '" />';
 								echo '<center>';
 								echo '<input class="btn btn-success like-button" type="submit" name="liked" value="Like" />';
 								echo '<input class="btn btn-danger" type="submit" name="dis" value="Dislike" />';
