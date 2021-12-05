@@ -146,7 +146,6 @@ if (isset($_GET['logout'])) {
 
           $password_2 = md5($user->getPassTwo());
 
-          echo md5($user->getPassOne());
           $sql = "UPDATE users SET username='$uname', email = '$email', password = '$password_1' WHERE  userID = '$type'";
 
           if ($db->query($sql) === TRUE) {

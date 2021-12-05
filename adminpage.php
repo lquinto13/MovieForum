@@ -144,7 +144,6 @@ if (isset($_GET['logout'])) {
                     }
                 } else {
                     $type = $_POST['type'];
-                    echo $type;
                     $sql = "SELECT * FROM users WHERE userID = '$type'";
 
                     $result = mysqli_query($db, $sql);
