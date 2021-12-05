@@ -15,7 +15,7 @@ if (isset($_GET['logout'])) {
 <html>
 
 <head>
-    <title>Home</title>
+    <title>Create a Topic</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- MDB Style -->
@@ -93,36 +93,48 @@ if (isset($_GET['logout'])) {
                             echo 'Before you can post a topic, you must wait for an admin to create some categories.';
                         }
                     } else {
-                        echo '  <form method="POST" action="create_topic.php" class="create-form shadow">
-                                    <h2 style = text-align:center>Create a Topic</h2>
+                        echo '  <div class="row">
+                                    <div class="col-md-4">
+                                    </div>
 
-                                    <!-- Subject Input and Category Select -->
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <input type="text" id="topic_subject" name="topic_subject" class="form-control" />
-                                                <label class="form-label" for="topic_subject">Subject</label>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <select class="form-select" name="topic_cat">';
+                                    <div class="col-md-4">
+                                        <form method="POST" action="create_topic.php" class="create-form shadow">
+                                            <h2 style = text-align:center>Create a Topic</h2>
+
+                                            <hr/>
+
+                                            <!-- Subject Input and Category Select -->
+                                            <div class="row mb-4">
+                                                <div class="col">
+                                                    <div class="form-outline">
+                                                        <input type="text" id="topic_subject" name="topic_subject" class="form-control" />
+                                                        <label class="form-label" for="topic_subject">Subject</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <select class="form-select" name="topic_cat">';
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '              <option value="' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</option>';
+                            echo '                      <option value="' . $row['cat_id'] . '">' . strtoupper($row['cat_name']) . '</option>';
                         }
-                        echo '              </select>
-                                        </div>
+                        echo '                      </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Message Input-->
+                                            <div class="form-outline mb-4">
+                                                <textarea class="form-control" id="post_content" name="post_content" rows="4"></textarea>
+                                                <label class="form-label" for="post_content">Message</label>
+                                            </div>
+
+                                            <!-- Submit Button -->
+                                            <button type="submit" name = "create-topic" class="btn btn-primary btn-block mb-4">Create Topic</button>
+
+                                        </form>
                                     </div>
                                     
-                                    <!-- Message Input-->
-                                    <div class="form-outline mb-4">
-                                        <textarea class="form-control" id="post_content" name="post_content" rows="4"></textarea>
-                                        <label class="form-label" for="post_content">Message</label>
+                                    <div class="col-md-4">
                                     </div>
-
-                                    <!-- Submit Button -->
-                                    <button type="submit" name = "create-topic" class="btn btn-primary btn-block mb-4">Create Topic</button>
-
-                                </form>';
+                                </div>';
                     }
                 }
             } else {
@@ -132,7 +144,9 @@ if (isset($_GET['logout'])) {
 
                 if (!$result) {
                     //Damn! the query failed, quit
-                    echo 'An error occured while creating your topic. Please try again later.';
+                    echo '  <div class="alert alert-danger" role="alert" style="margin: 1%">
+                                An error occured while creating your topic. Please try again later.
+                            </div>';
                 } else {
                     $name = $_SESSION['username'];
                     $user_check_query = "SELECT  * FROM users WHERE username ='$name'";
@@ -155,7 +169,9 @@ if (isset($_GET['logout'])) {
                 $result = mysqli_query($db, $sql);
                 if (!$result) {
                     //something went wrong, display the error
-                    echo 'An error occured while inserting your data. Please try again later.' . mysqli_error($db);
+                    echo '  <div class="alert alert-danger" role="alert" style="margin: 1%"> 
+                                An error occured while inserting your data. Please try again later.' . mysqli_error($db) .
+                            '</div>';
                     $sql = "ROLLBACK;";
                     $result = mysqli_query($db, $sql);
                 } else {
@@ -183,7 +199,9 @@ if (isset($_GET['logout'])) {
 
                         if (!$result) {
                             //something went wrong, display the error
-                            echo 'An error occured while inserting your post. Please try again later.' . mysqli_error($db);
+                            echo '  <div class="alert alert-danger" role="alert" style="margin: 1%">
+                                        An error occured while inserting your post. Please try again later.' . mysqli_error($db) .
+                                    '</div>';
                             $sql = "ROLLBACK;";
                             $result = mysqli_query($db, $sql);
                         } else {

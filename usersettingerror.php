@@ -41,9 +41,9 @@ if (isset($_POST['type'])) {
     $_POST['password_2'] = $row['password'];
   }
 
-  if ($password_1 != $password_2 ) {
+  if ($password_1 != $password_2) {
     array_push($errors, "The two passwords do not match");
-    }
+  }
 
 
 
@@ -58,10 +58,11 @@ if (isset($_POST['type'])) {
 
   if (mysqli_num_rows($res_u) > 0) {
     array_push($errors, "Username already exists");
-  }else if(mysqli_num_rows($res_e) > 0){
+  } else if (mysqli_num_rows($res_e) > 0) {
     array_push($errors, "Email already exists");
   }
-/*
+
+  /*
   if ($user) { // if user exists
     if ($user['username'] === $username) {
       array_push($errors, "Username already exists");

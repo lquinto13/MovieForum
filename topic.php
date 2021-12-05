@@ -15,7 +15,7 @@ if (isset($_GET['logout'])) {
 <html>
 
 <head>
-	<title>Home</title>
+	<title>Topic</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,6 +25,7 @@ if (isset($_GET['logout'])) {
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
 	<!-- Custom Styles -->
 	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/navbar-header-sidebar.css">
 	<link rel="stylesheet" href="css/topic.css" />
 </head>
 <!-- <style>

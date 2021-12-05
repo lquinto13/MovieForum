@@ -20,11 +20,24 @@
   }
 
   .create-form, .content {
-    width: 30%;
     margin: 0px auto;
     border: 1px solid #FF548C;
     background: white;
     border-radius: 10px 10px 10px 10px;
     padding: 2%; 
     margin-top: 2%;
+  }
+  
+  .btn-changeadmin{
+    background: #FF548C !important;
+    color: white;
+  }
+  
+  .btn-changeadmin:hover{
+    background: #FE3A7A !important;
+  }
+  
+  .btn-changeadmin:focus{
+    background: #FE3A7A !important;
+    outline: #FE3A7A !important;
   }

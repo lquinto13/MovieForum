@@ -15,9 +15,8 @@ if (isset($_GET['logout'])) {
 <html>
 
 <head>
-    <title>Home</title>
+    <title>Deleted Category</title>
 
-    <link rel="stylesheet" type="text/css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- MDB Style -->
@@ -85,7 +84,9 @@ if (isset($_GET['logout'])) {
             } else {
 
                 if (mysqli_num_rows($result) == 0) {
-                    echo 'No categories defined yet.';
+                    echo '  <div class="alert alert-danger" role="alert" style="margin: 1%">
+                                No categories defined yet.
+                            </div>';
                 } else {
                     while ($row = mysqli_fetch_assoc($result)) {
                         $sql = "DELETE FROM categories WHERE cat_id = $id";

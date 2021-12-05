@@ -14,7 +14,7 @@ if (isset($_GET['logout'])) {
 <html>
 
 <head>
-    <title>Home</title>
+    <title>Create a Category</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- MDB Style -->
@@ -73,24 +73,36 @@ if (isset($_GET['logout'])) {
             include('errors.php');
             if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                 //the form hasn't been posted yet, display it
-                echo "  <form method='post' action='' class='create-form shadow'>
-                            <h2 style = text-align:center>Create a Category</h2>
-
-                            <!-- Name input -->
-                            <div class='form-outline mb-4'>
-                                <input type='text' id='cat_name' name='cat_name' class='form-control' />
-                                <label class='form-label' for='cat_name'>Category Name</label>
+                echo "  <div class='row'>
+                            <div class='col-md-4'>
                             </div>
 
-                            <!-- Description input -->
-                            <div class='form-outline mb-4'>
-                                <textarea class='form-control' id='cat_description' name='cat_description' rows='4'></textarea>
-                                <label class='form-label' for='cat_description'>Category Description</label>
-                            </div>
+                            <div class='col-md-4'>
+                                <form method='post' action='' class='create-form shadow'>
+                                    <h2 style = text-align:center>Create a Category</h2>
+                                    
+                                    <hr/>
 
-                            <!-- Submit Button -->
-                            <button type='submit' name = 'create-cat' class='btn btn-primary btn-block mb-4'>Add category</button>
-                        </form>";
+                                    <!-- Name input -->
+                                    <div class='form-outline mb-4'>
+                                        <input type='text' id='cat_name' name='cat_name' class='form-control' />
+                                        <label class='form-label' for='cat_name'>Category Name</label>
+                                    </div>
+
+                                    <!-- Description input -->
+                                    <div class='form-outline mb-4'>
+                                        <textarea class='form-control' id='cat_description' name='cat_description' rows='4'></textarea>
+                                        <label class='form-label' for='cat_description'>Category Description</label>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button type='submit' name = 'create-cat' class='btn btn-primary btn-block mb-4'>Add category</button>
+                                </form>
+                            </div>
+                            
+                            <div class='col-md-4'>
+                            </div>
+                        </div>";
             } else {
                 if (count($errors) > 0) {
                     echo '  <div class="alert alert-primary" role="alert" style="margin: 1%">
@@ -105,7 +117,9 @@ if (isset($_GET['logout'])) {
                     $result = mysqli_query($db, $sql);
                     if (!$result) {
                         //something went wrong, display the error
-                        echo 'Error' . mysqli_error($db);
+                        echo '  <div class="alert alert-danger" role="alert" style="margin: 1%">
+                                    Error: ' . mysqli_error($db). 
+                                '</div>';
                     } else {
                         echo '  <div class="alert alert-success" role="alert" style="margin: 1%">
                                     New category successfully added.

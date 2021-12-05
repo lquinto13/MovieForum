@@ -17,7 +17,7 @@
 .table-with-FixHead {
     overflow-y: auto;
     overflow-x: auto, hidden;
-    height: 60vh;
+    height: 75vh;
     font-size: 1.25em;
     margin: 2%;
 }
