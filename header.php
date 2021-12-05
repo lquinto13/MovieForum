@@ -95,6 +95,7 @@ if (isset($_GET['logout'])) {
             echo "Welcome, <strong style='color: #FF548C; padding-left: 4px'> $this->username </strong>";
             echo '</a>';
             echo '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
+            echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/usersettings.php">User Settings</a></l1>';
             echo ' <l1> <a class="dropdown-item" style=" float:right;" href="/movieforum/adminpage.php">Admin Controls</a></l1>';
             echo '<li> <a class="dropdown-item" href="index.php?logout=" style="color: #F93154;">Logout</a>  </li>';
             echo ' </ul>';
