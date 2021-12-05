@@ -79,8 +79,9 @@ include 'header.php'
       {
         private $username;
         private $email;
-        private $userrole;
-        private $type;
+        private $password_1;
+        private $password_2;
+
 
         public function setFName($username)
         {
@@ -102,40 +103,48 @@ include 'header.php'
           return $this->email;
         }
 
-        public function setRole($userrole)
+        public function setPassOne($password_1)
         {
-          $this->userrole = $userrole;
+          $this->password_1 = $password_1;
         }
 
-        public function getRole()
+        public function getPassOne()
         {
-          return $this->userrole;
+          return $this->password_1;
         }
 
-        public function setCurrentRole($type)
+        public function setPassTwo($password_2)
         {
-          $this->type = $type;
+          $this->password_2 = $password_2;
         }
 
-
-        public function getCurrentRole()
+        public function getPassTwo()
         {
-          return $this->type;
+          return $this->password_2;
         }
+
+    
+
       }
 
       if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       } else {
         $user = new changedInfo();
-        $user->setCurrentRole($_POST['type']);
         $user->setFName($_POST['username']);
-        $user->setEmail($_POST['email']);        $uname =   $user->getFName();
+        $user->setEmail($_POST['email']);     
+        $user->setPassOne($_POST['password_1']);        
+        $user->setPassTwo($_POST['password_2']);        
+
+        $uname =   $user->getFName();
 
         $email =    $user->getEmail();
 
+        $password_1 =  md5($user->getPassOne());
 
-        $type =   $user->getCurrentRole();
-        $sql = "UPDATE users SET username='$uname', email = '$email' WHERE  userID = '$type'";
+        $password_2 = md5($user->getPassTwo());
+
+        echo md5($user->getPassOne());
+        $sql = "UPDATE users SET username='$uname', email = '$email', password = '$password_1' WHERE  userID = '$type'";
 
         if ($db->query($sql) === TRUE) {
           echo "Record updated successfully <br>";

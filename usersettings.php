@@ -93,6 +93,16 @@ include 'header.php'
                     echo '<td class="rightpart">';
                     echo '<h3><input = "text" name = "email"  placeholder= "email (leave blank if you dont want to change)"></input></h3>'  ;
                     echo '</tr>';
+                    echo '<td class="rightpart">';
+                    echo '<h3><a">Password</a></h3>' ;
+                    echo '<td class="rightpart">';
+                    echo '<h3><input type = "password" name = "password_1"  placeholder= "password (leave blank if you dont want to change)"></input></h3>'  ;
+                    echo '</tr>';
+                    echo '<td class="rightpart">';
+                    echo '<h3><a"> Confirm Password</a></h3>' ;
+                    echo '<td class="rightpart">';
+                    echo '<h3><input type = "password" name = "password_2"  placeholder= "password (leave blank if you dont want to change)"></input></h3>'  ;
+                    echo '</tr>';
                     echo '<tr>';
                     echo '<td class="rightpart">';
                    

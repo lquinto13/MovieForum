@@ -2,6 +2,8 @@
 // initializing variables
 $username = "";
 $email    = "";
+$password_1 = "";
+$password_2 = "";
 $errors = array();
 
 // connect to the database
@@ -17,7 +19,8 @@ if (isset($_POST['type'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
-
+  $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
+  $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
   if (empty($username) && empty($email)) {
     $_POST['username'] = $row['username'];
@@ -29,6 +32,18 @@ if (isset($_POST['type'])) {
   if (empty($username)) {
     $_POST['username'] = $row['username'];
   }
+
+  if (empty($password_1)) {
+    $_POST['password_1'] = $row['password'];
+  }
+
+  if (empty($password_2)) {
+    $_POST['password_2'] = $row['password'];
+  }
+
+  if ($password_1 != $password_2 ) {
+    array_push($errors, "The two passwords do not match");
+    }
 
 
 
