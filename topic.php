@@ -209,11 +209,10 @@ if (isset($_GET['logout'])) {
 
 							echo '	<div class="rounded reply-card-container col-md-12">';
 
-
 							while ($row = mysqli_fetch_assoc($result)) {
 								if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 									echo '
-									<div class="inner-main-body p-2 p-sm-3">
+										<div class="inner-main-body p-2 p-sm-3">
 											<div class="card mb-1">
 												<div class="card-body p-2 p-sm-3">
 													<div class="media">
@@ -265,17 +264,15 @@ if (isset($_GET['logout'])) {
 									</form> ';
 
 						} else {
-							//prepare the table
 
-							echo "<br>";
-							echo '<center> <table border="1" > </center>
-								<tr>
-								<td class="bottomreply" colspan= "2">
-								<center><h3> ' . $title['topic_subject'] . ' </h3></center>
-								</td>';
+							echo '	<div class="row">
+										<div class="col-md-3">
+										</div>
+
+										<div class="col-md-6">';
+							echo '<center> <h1 class="rounded" id = "title-style">' . $title['topic_subject'] . '</h1> </center>';
 
 							echo '<form method="POST" action="topic.php?=' . $topic . '">';
-							echo '<td>';
 							if ($liked === true) {
 								$outsql = "UPDATE likes 
                                 SET 
@@ -284,8 +281,10 @@ if (isset($_GET['logout'])) {
                                     userID = $id AND topic_id = $topic;";
 								echo '<input type="hidden" name="like" value="' . $outsql . '" />';
 								echo '<input type="hidden" name="id" value="' . $topic . '" />';
-								echo '<input type="button" disabled value="Liked" />';
-								echo '<input type="submit" value="Dislike" />';
+								echo '<center>';
+								echo '<input class="btn btn-dark like-button" type="button" disabled value="Liked" />';
+								echo '<input class="btn btn-danger" type="submit" value="Dislike" />';
+								echo '</center>';
 							} else if ($liked === false) {
 								$outsql = "UPDATE likes 
                                 SET 
@@ -294,30 +293,50 @@ if (isset($_GET['logout'])) {
                                     userID = $id AND topic_id = $topic;";
 								echo '<input type="hidden" name="like" value="' . $outsql . '" />';
 								echo '<input type="hidden" name="id" value="' . $topic . '" />';
-								echo '<input type="submit" value="Like" />';
-								echo '<input type="button" disabled value="Disliked" />';
+								echo '<center>';
+								echo '<input class="btn btn-success like-button" type="submit" value="Like" />';
+								echo '<input class="btn btn-dark" type="button" disabled value="Disliked" />';
+								echo '</center>';
 							} else {
 								$outsql = "INSERT INTO likes (`userID`, `topic_id`, `isLike`) VALUES
                                 ($id, $topic, ";
 								echo '<input type="hidden" name="like" value="' . $outsql . '" />';
 								echo '<input type="hidden" name="id" value="' . $topic . '" />';
-								echo '<input type="submit" name="liked" value="Like" />';
-								echo '<input type="submit" name="dis" value="Dislike" />';
+								echo '<center>';
+								echo '<input class="btn btn-success like-button" type="submit" name="liked" value="Like" />';
+								echo '<input class="btn btn-danger" type="submit" name="dis" value="Dislike" />';
+								echo '</center>';
 							}
-							echo '</td>';
 							echo '</form>';
-							echo '</tr>';
+
+							echo '		</div>
+							
+										<div class="col-md-3">
+										</div>
+									</div>';
+
+							//prepare the table
+
+							echo '	<div class="rounded reply-card-container col-md-12">';
+
 							while ($row = mysqli_fetch_assoc($result)) {
 								if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-									echo '<tr>';
-									echo '<td class="leftpart">';
-									echo '<h3>' . $row['username'] . '</h3>';
-									echo '<br>' . '<h3>' . $row['post_date'] . '</h3>';
-									echo '<td class="rightpart">';
-									echo '<h3><p ">' . $row['post_content'] . '</p>';
-									echo '</td>';
-									echo '</tr>';
-									echo '<tr>';
+									echo '
+										<div class="inner-main-body p-2 p-sm-3">
+											<div class="card mb-1">
+												<div class="card-body p-2 p-sm-3">
+													<div class="media">
+														<div class="media-body">
+															<h5 class="text-body">' . $row['username'] . '</h5>
+															<p class="reply-text">'
+															. $row['post_content'] .
+															'</p>
+															<p class="text-muted">sent on <span class="reply-text font-weight-bold">' . $row['post_date'] . '</span></p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>';
 								} else {
 									$sql = "INSERT INTO 
 										posts(post_content,
@@ -342,16 +361,18 @@ if (isset($_GET['logout'])) {
 									}
 								}
 							}
+							echo ' </div>';
+							
 							$row = mysqli_fetch_assoc($result7);
-							echo '<td class="bottomreply" colspan= "2">';
-							echo '<center>Reply:<br>';
-							echo "<br>";
-							echo '<form method="post" action="reply.php?id=' . $row['post_topic'] . '">
-									<textarea name="reply-content"></textarea>
-									<input type="submit" value="Submit reply" />
-								</form> ';
-							echo '</td>';
-							echo '</tr>';
+
+							echo '	<form class="create-reply-form" method="post" action="reply.php?id=' . $row['post_topic'] . '">
+										<div class="form-outline mb-2">
+											<textarea class="form-control create-reply-textarea" id="reply-content" name="reply-content" rows="8"></textarea>
+											<label class="form-label" for="reply-content">Reply</label>
+										</div>
+										<input class="btn btn-primary btn-lg btn-block" type="submit" value="Submit reply" />
+									</form> ';
+
 						}
 					}
 				}
@@ -360,18 +381,30 @@ if (isset($_GET['logout'])) {
 				if (isset($_POST['liked'])) {
 					$outsql = $_POST['like'] . "true)";
 					$topicID = $_POST['id'];
-					echo "Liked <br>";
-					echo 'Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.';
+					echo '	<div class="alert alert-success" role="alert" style="margin: 1%">
+								Liked
+							</div>';
+					echo '	<div class="alert alert-primary" role="alert" style="margin: 1%">
+								Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.
+							</div>';
 				} else if (isset($_POST['dis'])) {
 					$outsql = $_POST['like'] . "false)";
 					$topicID = $_POST['id'];
-					echo "Disliked <br>";
-					echo 'Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.';
+					echo '	<div class="alert alert-danger" role="alert" style="margin: 1%">
+								Disliked
+							</div>';
+					echo '	<div class="alert alert-primary" role="alert" style="margin: 1%">
+								Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.
+							</div>';
 				} else {
 					$outsql = $_POST['like'];
 					$topicID = $_POST['id'];
-					echo "Updated <br>";
-					echo 'Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.';
+					echo '	<div class="alert alert-info" role="alert" style="margin: 1%">
+								Updated 
+							</div>';
+					echo '	<div class="alert alert-primary" role="alert" style="margin: 1%">
+								Return to<a href="topic.php?id=' . htmlentities($topicID) . '"> topic</a>.
+							</div>';
 				}
 				$out = mysqli_query($db, $outsql);
 			}
